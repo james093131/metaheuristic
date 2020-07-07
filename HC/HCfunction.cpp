@@ -1,5 +1,4 @@
-#include "C:\Users\chieh\Documents\metaheuristic\normal.cpp"
-
+#include "HCfunction.hpp"
 void Enumnext(char *arr,int len){
 	int i=len-1;
 	int ran=rand()%2;

@@ -1,4 +1,5 @@
-#include "HCfunction.cpp"
+#include "../normal/normal.hpp"
+#include "HCfunction.hpp"
 //cmd執行方式 ./HC 100(bit數)  1000(iteration) 20(run) r(方法)
 int main(int argc,char *argv[]){
 	double START,END;
@@ -37,7 +38,14 @@ int main(int argc,char *argv[]){
 	cout<<"Average Optima :"<<avgiteration<<endl;
 	fstream file;//寫檔
 	file.open("LRhc.txt",ios::app);
-	file<<iteration<<' '<<avgiteration<<endl;
+	file<<iteration<<' '<<avgiteration<<' ';
+	if(argv[4] == std::string("r"))
+	{
+		file<<"random"<<endl;
+	}
+	else
+		file<<"leftright"<<endl;
+
 }
 
 

@@ -1,4 +1,4 @@
-#include "C:\Users\chieh\Documents\metaheuristic\normal.cpp"
+#include "../normal/normal.hpp"
 
 int main(int argc,char *argv[]){
 	double START,END;
