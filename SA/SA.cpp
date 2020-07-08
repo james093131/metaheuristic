@@ -7,7 +7,8 @@ int main(int argc,char *argv[]){
 	double START,END;
 	srand(time(NULL));
 	int len = atoi(argv[1]);
-    int run = atoi(argv[2]);
+    int iteration= atoi(argv[2]);
+    int run = atoi(argv[3]);
 	char onemax[len];
 	char temp[len];
 	int runresult[run];
@@ -24,9 +25,10 @@ int main(int argc,char *argv[]){
 			char temp[len];
 			memcpy(temp,onemax,sizeof(onemax));
 			NeighborSelection(temp,len);
-            double pa =SAformula(temp,onemax,temperature);
+            int curropt=Evaluate(temp,len);
+            double pa =SAformula(opt,curropt,temperature);
             double r=randomminmax(randomnum_min,randomnum_max);
-            update(r,pa,temp,onemax,len,opt);
+            update(r,pa,temp,onemax,len,opt,curropt);
 			cout<<"iteration"<<k+1<<":"<<opt<<endl;
 			if(opt==len)
 				break;			
