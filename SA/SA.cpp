@@ -1,4 +1,4 @@
-#include "SAfunction.cpp"
+#include "SAfunction.hpp"
 int main(int argc,char *argv[]){
 	double START,END;
 	srand(time(NULL));
@@ -8,6 +8,7 @@ int main(int argc,char *argv[]){
 	char onemax[len];
 	int runresult[run];
 	int runtime=0;//run
+	double T=temperature;
 	int k=0;//在第幾個iteration找到最佳解
 	while(runtime<run){
 		cout<<len<<"bits"<<endl;
@@ -21,9 +22,9 @@ int main(int argc,char *argv[]){
 			memcpy(temp,onemax,sizeof(onemax));
 			NeighborSelection(temp,len);
             int curropt=Evaluate(temp,len);
-            double pa =SAformula(opt,curropt);
+            double pa =SAformula(curropt,opt);
             double r=randomminmax();
-            update(r,pa,temp,onemax,len,opt,curropt);
+            update(r,pa,temp,onemax,len,opt,curropt,T);
 			cout<<"iteration"<<k+1<<":"<<opt<<endl;
 			if(opt==len)
 				break;			
