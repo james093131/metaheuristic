@@ -1,8 +1,4 @@
 #include "SAfunction.cpp"
-#define temperature 1
-#define alpha 0.9
-#define randomnum_max 1
-#define randomnum_min 0
 int main(int argc,char *argv[]){
 	double START,END;
 	srand(time(NULL));
@@ -26,8 +22,8 @@ int main(int argc,char *argv[]){
 			memcpy(temp,onemax,sizeof(onemax));
 			NeighborSelection(temp,len);
             int curropt=Evaluate(temp,len);
-            double pa =SAformula(opt,curropt,temperature);
-            double r=randomminmax(randomnum_min,randomnum_max);
+            double pa =SAformula(opt,curropt);
+            double r=randomminmax();
             update(r,pa,temp,onemax,len,opt,curropt);
 			cout<<"iteration"<<k+1<<":"<<opt<<endl;
 			if(opt==len)

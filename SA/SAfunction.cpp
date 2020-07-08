@@ -1,3 +1,7 @@
+#define temperature 1
+//#define alpha 0.9
+#define randomnum_max 1
+#define randomnum_min 0
 #include "../normal/normal.hpp"
 #include<math.h>
 void NeighborSelection(char *arr,int size){
@@ -6,16 +10,15 @@ void NeighborSelection(char *arr,int size){
 		arr[ran]='0';
 	else
 		arr[ran]='1';
-    
 }
-int SAformula(int newsol  ,int currsol,double temperature)
+int SAformula(int newsol  ,int currsol)
 {
     double pa=exp((newsol-currsol)/temperature);
     return pa;
 }
-double randomminmax(double min ,double max)
+double randomminmax()
 {
-    double r = (max - min) * rand() / (RAND_MAX + 1.0) + min;
+    double r = (randomnum_max - randomnum_min) * rand() / (RAND_MAX + 1.0) + randomnum_min;
     return r;
 }
 void update(double r,double pa,char *newarr,char *currarr,int len,int &opt,int curropt)
@@ -28,5 +31,4 @@ void update(double r,double pa,char *newarr,char *currarr,int len,int &opt,int c
 		}
 		opt=curropt;
 	}
-    
 }
