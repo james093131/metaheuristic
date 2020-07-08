@@ -6,11 +6,10 @@ int main(int argc,char *argv[]){
     int iteration= atoi(argv[2]);
     int run = atoi(argv[3]);
 	char onemax[len];
-	char temp[len];
 	int runresult[run];
-	int r=0;//run
+	int runtime=0;//run
 	int k=0;//在第幾個iteration找到最佳解
-	while(r<run){
+	while(runtime<run){
 		cout<<len<<"bits"<<endl;
 		char  onemax[len];
 		create(onemax,len);
@@ -30,7 +29,7 @@ int main(int argc,char *argv[]){
 				break;			
 			k++;
 		}
-		runresult[r]=opt;
-		r++;
+		runresult[runtime]=opt;
+		runtime++;
 	}
 }

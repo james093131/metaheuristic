@@ -1,5 +1,4 @@
 #define temperature 1
-//#define alpha 0.9
 #define randomnum_max 1
 #define randomnum_min 0
 #include "../normal/normal.hpp"
