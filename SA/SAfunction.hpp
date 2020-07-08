@@ -8,3 +8,5 @@ void NeighborSelection(char *,int );
 double SAformula(int   ,int );
 double randomminmax();
 void update(double ,double ,char *,char *,int ,int &,int ,double &);
+void SA(char *,int &,int ,int ,double);
+void run(char *,int &,int ,int ,double ,int ,int *);

@@ -28,3 +28,38 @@ void update(double r,double pa,char *newarr,char *currarr,int len,int &opt,int c
 		opt=curropt;
 	}
 }
+void SA(char *arr,int &opt,int iteration,int len,double T)
+{
+		int k=0;
+		while(k<iteration)
+		{
+			char temp[len];
+			for(int i=0;i<len;i++)
+			{
+				temp[i]=arr[i];
+			}
+			NeighborSelection(temp,len);
+            int curropt=Evaluate(temp,len);
+            double pa =SAformula(curropt,opt);
+            double r=randomminmax();
+            update(r,pa,temp,arr,len,opt,curropt,T);
+			cout<<"iteration"<<k+1<<":"<<opt<<endl;
+			if(opt==len)
+				break;			
+			k++;
+		}
+}
+void run(char *arr,int &opt,int iteration,int len,double T,int run,int *result)
+{
+	int r=0;
+	while(r<run)
+	{
+		cout<<len<<"bits"<<endl;
+		char  arr[len];
+		create(arr,len);
+		opt=Evaluate(arr,len);
+		SA(arr,opt,iteration,len,T);
+		result[r]=opt;
+		r++;
+	}
+}

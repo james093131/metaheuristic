@@ -32,14 +32,3 @@ void compare(char *arr,char *temp,int len,int &opt,int curropt)
 
 	
 }
-int avg(int *arr,int len)
-{
-	int sum=0;
-	for(int i=0;i<len;i++)
-	{
-		sum+=arr[i];
-		cout<<"iteration"<<i+1<<':'<<arr[i]<<endl;
-	}
-	int avg=sum/len;
-	return avg;
-}

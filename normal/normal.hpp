@@ -11,3 +11,4 @@ void Print(char *,int );
 int Evaluate(char *,int );
 void add(char *,int );
 void sub (char *,int );
+int avg(int *,int );

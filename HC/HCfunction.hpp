@@ -2,5 +2,4 @@
 void Enumnext(char *,int );
 void NeighborSelection(char *,int );
 void compare(char *,char *,int ,int &,int );
-int avg(int *,int );
 

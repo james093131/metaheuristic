@@ -61,3 +61,14 @@ void sub (char *arr,int len)
 		}
 	} 
 }
+int avg(int *arr,int len)
+{
+	int sum=0;
+	for(int i=0;i<len;i++)
+	{
+		sum+=arr[i];
+		cout<<"iteration"<<i+1<<':'<<arr[i]<<endl;
+	}
+	int avg=sum/len;
+	return avg;
+}
