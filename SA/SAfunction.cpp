@@ -11,7 +11,7 @@ void NeighborSelection(char *arr,int size){
 	else
 		arr[ran]='1';
 }
-int SAformula(int newsol  ,int currsol)
+double SAformula(int newsol  ,int currsol)
 {
     double pa=exp((newsol-currsol)/temperature);
     return pa;
