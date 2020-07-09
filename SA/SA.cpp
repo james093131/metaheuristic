@@ -3,7 +3,7 @@ int main(int argc,char *argv[]){
 	double START,END;
 	srand(time(NULL));
 	int len = atoi(argv[1]);
-    int iteration= atoi(argv[2]);
+    int iteration= atoi(fnuargv[2]);
     int runtime = atoi(argv[3]);
 	char onemax[len];
 	int runresult[runtime];
@@ -13,4 +13,7 @@ int main(int argc,char *argv[]){
 	run(onemax,opt,iteration,len,T,runtime,runresult);
 	int avgiteration=avg(runresult,runtime);
 	cout<<"Average Optima :"<<avgiteration<<endl;
+	fstream file;//寫檔
+	file.open("SAresult.txt",ios::app);
+	file<<iteration<<' '<<avgiteration<<endl;
 }
