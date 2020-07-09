@@ -1,6 +1,6 @@
 #define randomnum_max 1
 #define randomnum_min 0.5
-#define A 0.95
+#define A 0.4
 #define temperature 1
 #include "../normal/normal.hpp"
 #include<math.h>

@@ -1,7 +1,7 @@
 #define tabulist 0.05
 #include "../normal/normal.hpp"
 #include "../HC/HCfunction.hpp"
-//cmd執行方式 ./TB 100(bit數)  1000(iteration) 20(run) 
+//cmd執行方式 ./TS 100(bit數)  1000(iteration) 20(run) 
 int main(int argc,char *argv[]){
 	double START,END;
 	srand(time(NULL));

@@ -1,9 +1,10 @@
+//cmd執行方式 ./SA 100(bit數)  1000(iteration) 30(run) 
 #include "SAfunction.hpp"
 int main(int argc,char *argv[]){
 	double START,END;
 	srand(time(NULL));
 	int len = atoi(argv[1]);
-    int iteration= atoi(fnuargv[2]);
+    int iteration= atoi(argv[2]);
     int runtime = atoi(argv[3]);
 	char onemax[len];
 	int runresult[runtime];

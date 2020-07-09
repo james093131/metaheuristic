@@ -1,0 +1,30 @@
+cmd執行方式 ./SA 100(bit數)  1000(iteration) 30(run) 
+此次輸出三種不同結果，主要討論alpha和r的最小值導致的差異性
+
+result1的設定如下
+randomnum_max 1
+randomnum_min 0.5
+Alpha 0.95
+temperature 1
+在求解100bit的問題下大致可以在800 iteration下找到最佳解
+
+result2的設定如下
+randomnum_max 1
+randomnum_min 0
+Alpha 0.95
+temperature 12
+在求解100bit的問題下只能收斂在73bits左右
+
+result3的設定如下
+randomnum_max 1
+randomnum_min 0.5
+Alpha 0.8
+temperature 1
+在求解100bit的問題下大致可以在800 iteration下找到最佳解
+
+conclusion
+從result1和2，可以看出改變r的最小值會使得收斂的局部最佳解有所差異
+原因可以參照ＳＡ退火公式，r的最小值越小代表能接受差解的機率更大，所以會使得結果在70bits左右徘徊
+
+從result2和3，可以看出改變alpha的大小影響並不大
+參照ＳＡ退火公式，alpha越小會使得收斂速度較快(較不容易允許差解產生）但降低0.15並無法在100bits的問題下看出明顯差異
