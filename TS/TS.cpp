@@ -59,6 +59,40 @@ void NoneTabuNeighborSelection(char *arr,int len,queue<char>tabulist,int tabusiz
 	}
 
 }
+void TABU(char *arr,int len,queue<char>tabulist,int tabusize,int &samecount,int opt,int iteration,int r,int *result)
+{
+	int k=0;//在第幾個iteration找到最佳解
+	while(k<iteration)
+	{
+		char temp[len];
+		for(int i=0;i<len;i++)
+		{
+			temp[i]=arr[i];
+		}
+		NoneTabuNeighborSelection(temp,len,tabulist,tabusize,samecount);
+		tabumake(tabulist,temp,len,tabusize);				
+		int curropt=Evaluate(temp,len);
+		compare(arr,temp,len,opt,curropt);
+		cout<<"iteration "<<k+1<<":"<<opt<<endl;
+		if(opt==len)
+			break;		
+		k++;
+	}
+	result[r]=opt;
+}
+void RUN(char *arr,int len,queue<char>tabulist,int tabusize,int &samecount,int opt,int iteration,int run,int *result)
+{
+	int r=0;
+	while(r<run)
+	{
+		cout<<len<<"bits"<<endl;
+		char  arr[len];
+		create(arr,len);
+		opt=Evaluate(arr,len);
+		TABU(arr,len,tabulist,tabusize,samecount,opt,iteration,r,result);
+		r++;
+	}
+}
 int main(int argc,char *argv[]){
 	double START,END;
 	srand(time(NULL));
@@ -67,7 +101,6 @@ int main(int argc,char *argv[]){
 	int run = atoi(argv[3]);
 	int runresult[run];
 	int r=0;//run
-	int k=0;//在第幾個iteration找到最佳解
 	int tabusize=len*tabulistcoeff+1;
 	int samecount=0;	
 	queue<char> tabulist;
@@ -75,21 +108,10 @@ int main(int argc,char *argv[]){
 	create(onemax,len);
 	tabumake(tabulist,onemax,len,tabusize);
 	int opt=Evaluate(onemax,len);
-	while(k<iteration)
-	{
-		char temp[len];
-		memcpy(temp,onemax,sizeof(onemax));
-		NoneTabuNeighborSelection(temp,len,tabulist,tabusize,samecount);
-		tabumake(tabulist,temp,len,tabusize);				
-		int curropt=Evaluate(temp,len);
-		compare(onemax,temp,len,opt,curropt);
-		cout<<"iteration "<<k+1<<":"<<opt<<endl;
-		if(opt==len)
-			break;		
-		k++;
-	}
-	cout<<"Same Situation "<<samecount<<endl;	
-
+	RUN(onemax,len,tabulist,tabusize,samecount,opt,iteration,run,runresult);
+	int avg_optimim=avg(runresult,run);
+	cout<<"Average optima :"<<avg_optimim<<endl;
+	cout<<"Average same situation "<<samecount/run<<endl;
 }
 
 
