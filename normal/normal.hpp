@@ -12,3 +12,4 @@ int Evaluate(char *,int );
 void add(char *,int );
 void sub (char *,int );
 int avg(int *,int );
+void compare(char *,char *,int ,int &,int );

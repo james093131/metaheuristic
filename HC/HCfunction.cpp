@@ -19,16 +19,4 @@ void NeighborSelection(char *arr,int size){
 		arr[ran]='1';
     
 }
-void compare(char *arr,char *temp,int len,int &opt,int curropt)
-{
-	if(curropt>=opt)
-	{
-		for(int i=0;i<len;i++)
-		{
-			arr[i]=temp[i];
-		}
-		opt=curropt;
-	}
 
-	
-}

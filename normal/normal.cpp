@@ -72,3 +72,16 @@ int avg(int *arr,int len)
 	int avg=sum/len;
 	return avg;
 }
+void compare(char *arr,char *temp,int len,int &opt,int curropt)
+{
+	if(curropt>=opt)
+	{
+		for(int i=0;i<len;i++)
+		{
+			arr[i]=temp[i];
+		}
+		opt=curropt;
+	}
+
+	
+}
