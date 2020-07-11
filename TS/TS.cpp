@@ -15,10 +15,16 @@ int main(int argc,char *argv[]){
 	create(onemax,len);
 	tabumake(tabulist,onemax,len,tabusize);
 	int opt=Evaluate(onemax,len);
+	START=clock();
 	RUN(onemax,len,tabulist,tabusize,samecount,opt,iteration,run,runresult);
-	int avg_optimim=avg(runresult,run);
-	cout<<"Average optima :"<<avg_optimim<<endl;
+	END=clock();
+	int avg_optimum=avg(runresult,run);
+	cout<<"Average optimum :"<<avg_optimum<<endl;
 	cout<<"Average same situation "<<samecount/run<<endl;
+	cout<<"Execution Time:"<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
+	fstream file;//寫檔
+	file.open("TSresult.txt",ios::app);
+	file<<iteration<<' '<<avg_optimum<<endl;
 }
 
 
