@@ -2,7 +2,7 @@ randomnum_max 1
 randomnum_min 0
 A 0.95
 temperature 1
-0 0
+0 49
 10 51
 20 55
 30 57
@@ -16,7 +16,7 @@ temperature 1
 200 70
 300 72
 400 73
-500 74
+500 73
 600 71
 700 73
 800 73
