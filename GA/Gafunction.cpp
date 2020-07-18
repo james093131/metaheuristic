@@ -1,67 +1,126 @@
-void sum(int *arr,int len,int &s)
+#include "GAfunction.hpp"  
+#include "crossover.hpp"
+void printonedim(int *arr,int len)
 {
     for(int i=0;i<len;i++)
     {
-        s+=arr[i];
+        cout<<arr[i]<<' ';
     }
+    cout<<endl;
 }
-void cut(int *value,float *split,int sum,int item)
+void printtwodim(char *arr,int pop,int len)
 {
-    split[0]=0;split[item]=1;
-    float temp=0;
-    for(int i=1;i<item;i++)//設定區間用
+    for(int i=0;i<pop;i++)
     {
-        temp+=value[i];
-        split[i]=temp/sum;
+        for(int j=0;j<len;j++)
+        {           
+            cout<<*((char*)arr +len*i+j)<<' ';
+        }
+        cout<<endl<<endl;
     }
 }
-void tran(int &chc,float x,float *split,int len){
-    for(int i=1;i<len;i++)
+void create(char *arr,int pop,int len)//隨機產生01
+{
+    for(int i=0;i<pop;i++)
     {
-        if(x>split[i-1]&&x<split[i])
+        for(int j=0;j<len;j++)
+        {           
+            int a=rand()%2;
+            char c =a+'0';
+            *((char*)arr +len*i+j)=c;
+            //cout<<*((char*)arr +len*i+j)<<' ';
+        }
+        //cout<<endl<<endl;
+    }
+}
+void evaluate(char *arr,int pop,int len,int *value,int &bestpop,int &bestvalue)//評估所有染色體的適應度（也就是1有幾個)
+{
+    bestvalue=0;
+    for(int i=0;i<pop;i++)
+    {
+        int temp=0;
+        for(int j=0;j<len;j++)
         {
+           if(*((char*)arr +len*i+j)=='1')
+           {
+            temp++;
+           }
+        }
+        value[i]=temp;
+        if(value[i]>bestvalue)
+            {
+                bestpop=i;
+                bestvalue=value[i];
+            }
+    }
 
-            chc=i-1;
+}
+void updateglobalbest(int bestvalue,int bestpop,int &globalbestvalue,char *globalbest,char *arr,int len)
+{
+     if(bestvalue>globalbestvalue)
+        {
+            globalbestvalue=bestvalue;
+            for(int i=0;i<len;i++)
+            {
+                globalbest[i]= *((char*)arr +bestpop*len+i);
+            }
+        }
+}
+int avg(int *arr,int len)
+{
+	int sum=0;
+	for(int i=0;i<len;i++)
+	{
+		sum+=arr[i];
+		//cout<<"iteration"<<i+1<<':'<<arr[i]<<endl;
+	}
+	int avg=sum/len;
+	return avg;
+}
+void finaloutput(int len,int pop,int avgbestvalue,int run,double START,double END,char * function)
+{   
+    cout<<"length : "<<len<<endl;
+    cout<<"Population : "<<pop<<endl;
+    cout<<"Run :"<<run<<endl;
+    cout<<"Average Optimum : "<<avgbestvalue<<endl;
+    if(function == std::string("t"))
+        cout<<"Select Function : Tournament"<<endl;
+    else
+        cout<<"Select Function : Roulettechoose"<<endl;
+    cout<<"Execution Time :"<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
+}
+void GA(int iteration,char *P,int *value,int pop,int len,char *globalbest,int &globalbestvalue,int bestvalue,int bestpop,int r,int *result,char *function)
+{
+    int i=1;
+    while(i<iteration)
+    {
+        char temp[pop][len];
+        if(function == std::string("t"))
+            tournament((char*)P,(char*)temp,value,pop,len);
+        else
+        {
+         roulettechoose((char*)P,(char*)temp,value,pop,len);
+        }
+        
+        crossover((char*)P,(char*)temp,pop,len);
+        evaluate((char*)P,pop,len,value,bestpop,bestvalue);
+        //printonedim(value,pop);
+        updateglobalbest(bestvalue,bestpop,globalbestvalue,globalbest,(char*)P,len);
+        i++;
+        if(globalbestvalue==len)
             break;
-        }
     }
-
+    result[r]=globalbestvalue;
 }
-void roulettechoose(int *arr,int *temp,int *value,int item,int len)
+void RUN(int iteration,char *P,int *value,int pop,int len,char *globalbest,int &globalbestvalue,int bestvalue,int bestpop,int run,int *result,char *function)
 {
-    int i=0;
-    int s=0;
-    int chc;
-    float split[item+1];
-    sum(value,len,s);
-    cut(value,split,s,item);
-    while(i<pop){
-        float x = (float) rand() / (RAND_MAX + 1.0);
-        tran(chc,x,split,pop+1);
-        for(int k=0;k<len;k++)
-        {
-            *((int*)temp +len*i+k)=*((int*)arr +len*chc+k);
-        }
-        i++;
+     int r=0;
+    while(r<run){
+        create((char*)P,pop,len);//隨機生成陣列
+        evaluate((char*)P,pop,len,value,bestpop,bestvalue);
+        GA(iteration,(char*)P,value,pop,len,globalbest,globalbestvalue,bestvalue,bestpop,r,result,function);
+        r++;
     }
-}
-void tournament(int *arr,int *temp,int *value,int item,int len){
-    int i=0;
-    while(i<item){
-        int c1=rand()%(item);
-        int c2=rand()%(item);
-        int chc;
-        if(value[c1]>value[c2]){
-            chc=c1;
-        }
-        else{
-            chc=c2;
-        }
-        for(int k=0;k<len;k++)
-        {
-        *((int*)temp +len*i+k)=*((int*)arr +len*chc+k);
-        }
-        i++;
-    }
-}
  
+    
+}

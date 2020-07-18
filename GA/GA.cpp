@@ -1,76 +1,30 @@
-#include<stdio.h>
-#include<fstream>
-#include<iostream>
-#include<sstream>
-#include<stdlib.h>
-#include <string.h>
-#include<time.h>
-using namespace std;
-void create(int *arr,int item,int len)//隨機產生01
+#include "GAfunction.hpp"
+int main(int argc, char *argv[])
 {
-    for(int i=0;i<item;i++)
-    {
-        for(int j=0;j<len;j++)
-        {
-               *((int*)arr +len*i+j)=rand()%2;
-               //cout<<*((int*)arr +len*i+j)<<' ';
-        }
-        //cout<<endl<<endl;
-    }
-}
-void copyonepop(int *arr,int *temp,int index,int len)
-{
-    for(int i=0;i<len;i++)
-    {
-        temp[i]=*((int*)arr +len*index+i);
-    }
-}
-void evaluate(int *arr,int item,int len,int *value)//評估所有染色體的適應度（也就是1有幾個)
-{
-   for(int i=0;i<item;i++)
-    {
-        int temp=0;
-        for(int j=0;j<len;j++)
-        {
-           if(*((int*)arr +len*i+j)==1)
-           {
-            temp++;
-           }
-        }
-        value[i]=temp;
-    }
-
-}
-void findhalfbest(int *arr,int *value,int *best,int *globalbest,int item,int len,int &opt)//找出最優的一半染色體以及紀錄最佳解有幾個1
-{
-    int temp[item];
-    int index[item];
-    for(int i=0;i<item;i++)
-    {
-        temp[i]=value[i];
-        index[i]=i;
-    }
-    for(int i=0;i<item;i++)//sort的概念
-    {
-        for(int j=i+1;j<item;j++)
-        {
-            if(temp[i]<temp[j])
-            {
-                int temp1=temp[i];
-                int temp2=index[i];
-                temp[i]=temp[j];
-                temp[j]=temp1;
-                index[i]=index[j];
-                index[j]=temp2;
-            }
-        }
-    }
-    opt=temp[0];
-    copyonepop(arr,globalbest,index[0],len);
-    for(int i=0;i<item/2;i++)
-    {
-        best[i]=index[i];
-       // cout<<best[i]<<' ';
-    }
-    //cout<<endl;
+    double START,END;
+    srand(time(NULL));
+    int len = atoi(argv[1]);
+    int pop = atoi(argv[2]);
+	int iteration = atoi(argv[3]);
+    int run = atoi(argv[4]);
+    char * functionchoice=argv[5];
+    char P[pop][len];
+    int value[pop];//儲存目前最佳的染色體
+    char globalbest[len];
+    int globalbestvalue=0;;
+    int bestpop=0;//儲存最佳的解的位置
+    int bestvalue=0;//儲存最佳的解多少bit
+    //printonedim(value,pop);
+    int result[run];
+    START=clock();
+    RUN(iteration,(char*)P,value,pop,len,globalbest,globalbestvalue,bestvalue,bestpop,run,result,functionchoice);
+    END=clock();
+    int avg_bestvalue=avg(result,run);
+    finaloutput(len,pop,avg_bestvalue,run,START,END,functionchoice);
+    fstream file;//寫檔
+    if(functionchoice == std::string("t"))
+	    file.open("GA_Tournament_result.txt",ios::app);
+    else
+        file.open("GA_Roulettechoose_result.txt",ios::app);
+	file<<iteration<<' '<<avg_bestvalue<<endl;
 }
