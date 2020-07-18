@@ -23,8 +23,8 @@ int main(int argc, char *argv[])
     finaloutput(len,pop,avg_bestvalue,run,START,END,functionchoice);
     fstream file;//寫檔
     if(functionchoice == std::string("t"))
-	    file.open("GA_Tournament_result.txt",ios::app);
+	    file.open("GA_Tournament.txt",ios::app);
     else
-        file.open("GA_Roulettechoose_result.txt",ios::app);
+        file.open("GA_Roulettechoose.txt",ios::app);
 	file<<iteration<<' '<<avg_bestvalue<<endl;
 }
