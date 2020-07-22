@@ -60,8 +60,8 @@ int main(int argc,char *argv[]){
     int len;
     int city[len][dim];
     int *a=read(len);//讀檔用的pointer
-    cout<<len<<endl;
-    makearr((int*)city,a,len);
     double pher[len][len];//紀錄費洛蒙表
     phermoneinitial( (double*)pher,len);
+    cout<<len<<endl;
+    makearr((int*)city,a,len);
 }
