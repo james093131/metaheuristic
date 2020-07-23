@@ -4,14 +4,8 @@
 #define Q 0.9
 #define dim 3 //每一行有幾個數
 #define initial_phermone 0.1//起始費洛蒙值
-#include<stdio.h>
-#include<fstream>
-#include<iostream>
-#include<sstream>
-#include<stdlib.h>
-#include <string.h>
-#include<time.h>
-using namespace std;
+#include "../normal/normal.hpp"
+#include "math.h"
 int* read(int &sum){//讀檔
 
     fstream file;
@@ -50,6 +44,13 @@ void phermoneinitial(double *pher,int len)
         }
     }
 }
+double distance_calculate(int x1 ,int y1,int x2,int y2){//計算兩點的距離
+    double dis;
+    dis=pow(x2-x1,2)+pow(y2-y1,2);
+    dis=sqrt(dis);
+    return dis;
+}
+
 int main(int argc,char *argv[]){
 	double START,END;
     srand( static_cast<unsigned int>(time(nullptr)));
@@ -61,7 +62,9 @@ int main(int argc,char *argv[]){
     int city[len][dim];
     int *a=read(len);//讀檔用的pointer
     double pher[len][len];//紀錄費洛蒙表
-    phermoneinitial( (double*)pher,len);
+    double distancetable[len][len];
+    phermoneinitial( (double*)pher,len);//起始費洛蒙濃度
     cout<<len<<endl;
-    makearr((int*)city,a,len);
+    makearr((int*)city,a,len);//紀錄好city的點和xy軸
+    
 }
