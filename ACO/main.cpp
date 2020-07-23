@@ -92,10 +92,9 @@ double formula(double *distance,double *phermone,int cityquan,int start,int poin
     double result=pow(1/dis,alp)+pow(*((double*)phermone +cityquan*(start)+point),beta);
     return result;
 }
-int probabilitytable(double *distance,double *phermone,int cityquan,int start,int *visit,int visitindex)
+int probabilitytable(double *distance,double *phermone,int cityquan,int start,int *visit,int visitindex,double *formularesult)
 {
-    double formularesult[cityquan];//儲存公式計算完的結果
-    memset(formularesult,0,cityquan);
+   
     for(int i=0;i<visitindex;i++)
     {
         formularesult[visit[visitindex]]=-1;//如果儲存過的則標註
@@ -160,5 +159,7 @@ int main(int argc,char *argv[]){
     int bestcity=probabilitytable((double*)distancetable,(double*)pher,cityquan,0);
     int visit[cityquan];//造訪順序表
     visit[0]=0;
+    double formularesult[cityquan];//儲存公式計算完的結果   
+    memset(formularesult,0,cityquan);
    
 }
