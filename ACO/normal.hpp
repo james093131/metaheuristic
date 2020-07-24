@@ -19,7 +19,7 @@
 #define ant 51
 #define alpha 3.25
 #define beta 9.75
-#define iteration 1250
+#define iteration 1000
 #define run 30
 #define dim 3//幾維
 #define start 1

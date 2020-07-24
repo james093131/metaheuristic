@@ -111,15 +111,15 @@ void oneant(int *arr,double *pher,int *path,int ini,int len,double &dis,double *
     dis+=*((double*)distable +len*(ini-1)+path[len-1]-1);
     //Print(path,len+1);
 }
-void randompath(int *arr,double &path,int *order,int len,double *distable)
+void randompath(int *arr,double &path,int *order,int len,double *distable,int ini)
 {
     int check[len];
     int k=1;
     memset(check,-1,sizeof(check));
-    check[start-1]=1;//用陣列ind去對所以要減一
-    order[0]=start;
-    order[len]=start;
-    int temppoint=start-1;
+    check[ini-1]=1;//用陣列ind去對所以要減一
+    order[0]=ini;
+    order[len]=ini;
+    int temppoint=ini-1;
     int c = 0;
     while(k<len)
     {
@@ -136,7 +136,7 @@ void randompath(int *arr,double &path,int *order,int len,double *distable)
         k++;
     }
     //path+=calculatedistance(*((int*)arr +dim*(start-1)+1),*((int*)arr +dim*(start-1)+2),*((int*)arr +dim*(c)+1),*((int*)arr +dim*(c)+2));//最後一點回到1
-    path+=*((double*)distable +len*(start-1)+c);
+    path+=*((double*)distable +len*(ini-1)+c);
 
 }
 void bestphermoneupdate(int *bestpath,double *pher,int dis,int len,double dec){
@@ -149,8 +149,6 @@ void bestphermoneupdate(int *bestpath,double *pher,int dis,int len,double dec){
             *((double*)pher +len*(y)+k)=*((double*)pher +len*(y)+k)*dec+(double)Q/dis;
     }
 }
-
-
 
 double distance_calculate(int x1 ,int y1,int x2,int y2){//計算兩點的距離
     double dis;
@@ -213,13 +211,5 @@ void twoopt(int *path,int len,double &distance,double *distancetable)
                 distance=pathcal(path,distancetable,len);
             }
         }
-    }
-}
-
-void neighboringchange(int *path,int len,double &distance,double *distancetable)
-{
-    for(int i=1;i<len;i++)
-    {
-        printf "FUCKＣＷＴ"
     }
 }
