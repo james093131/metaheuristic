@@ -1,165 +1,126 @@
-#define alp 2.0//費洛蒙值
-#define beta 5.0//距離係數
-#define rho 0.1//衰退
-#define Q 0.9
-#define dim 3 //每一行有幾個數
-#define initial_phermone 0.1//起始費洛蒙值
-#define q0 0.1//機率選擇小於則選擇最優解
-#include <math.h>
-#include<stdio.h>
-#include<fstream>
-#include<iostream>
-#include<sstream>
-#include<stdlib.h>
-#include <string.h>
-#include<time.h>
-using namespace std;
-int* read(int &sum){//讀檔
+//
+//  main.cpp
+//  ACOXCODE
+//
+//  Created by TzuChieh on 2020/3/18.
+//  Copyright © 2020 TzuChieh. All rights reserved.
+//
 
-    fstream file;
-    int ind=0;
-    file.open("readfile.txt",ios::in);
-    int* temp=new int[510];
-    while(file)
-    {
-        file>>temp[ind];
-        ind++;
-    }
-    sum=(ind-1)/3;
-    return temp;
-}
-void makearr(int *arr,int *input,int len)//將測資讀為整理好的陣列
+#include "normal.hpp"
+#include "function.hpp"
+int main(int argc, char const *argv[])
 {
-    int chc=0;
-    for(int i=0;i<len;i++)
-    {
-        for(int j=0;j<dim;j++)
-        {
-            *((int*)arr +dim*i+j)=*(input+chc);
-            cout<<*((int*)arr +dim*i+j)<<' ';
-            chc++;
-        }
-        cout<<endl<<endl;
-    }
-}
-void phermoneinitial(double *pher,int len)
-{
-    for(int i=0;i<len;i++)
-    {
-        for(int j=0;j<len;j++)
-        {
-        *((double*)pher +len*(i)+j)=initial_phermone;
-        }
-    }
-}
-double fRand(double fMin, double fMax)
-{
-    return fMin + (rand() / ( RAND_MAX / (fMax-fMin) ) ) ;  
-}
-double distance_calculate(int x1 ,int y1,int x2,int y2){//計算兩點的距離
-    double dis;
-    dis=pow(x2-x1,2)+pow(y2-y1,2);
-    dis=sqrt(dis);
-    return dis;
-}
-void distance(double *arr ,int *city,int cityquan)
-{
-    for(int i=0;i<cityquan;i++)
-    {
-        for(int j=0;j<cityquan;j++)
-        {
-            if(i<=j)
-                *((double*)arr +cityquan*(i)+j)=distance_calculate(*((int*)city +dim*(i)+1),*((int*)city +dim*(i)+2),*((int*)city +dim*(j)+1),*((int*)city +dim*(j)+2));
-                *((double*)arr +cityquan*(j)+i)=*((double*)arr +cityquan*(i)+j);
-        }
-    }
-}
-void print2dim(double *arr,int len)
-{
-    for(int i=0;i<len;i++)
-    {
-        for(int j=0;j<len;j++)
-        {
-            cout<<*((double*)arr +len*(i)+j)<<' ';
-        }
-        cout<<endl;
-    }
-        
-}
-double formula(double *distance,double *phermone,int cityquan,int start,int point)//套用ACO費洛蒙與距離公式
-{
-    double dis=*((double*)distance +cityquan*(start)+point);
-    double result=pow(1/dis,alp)+pow(*((double*)phermone +cityquan*(start)+point),beta);
-    return result;
-}
-int probabilitytable(double *distance,double *phermone,int cityquan,int start,int *visit,int visitindex,double *formularesult)
-{
+    int r=0;
+    
+    double START,END;
+    srand( static_cast<unsigned int>(time(nullptr)));
+    int *a;
+    int templen;
+    a=read(templen);//讀檔用的pointer
+    
+    int len=templen/dim;
+    int bestrunpath[len+1];
+    int result[run];
+    int bestrunresult=100000;
+    START=clock();
    
-    for(int i=0;i<visitindex;i++)
+  
+    int city[len][dim];
+    double distancetable[len][len];//儲存距離表
+    makearr((int*)city,a,len);
+    distancecal((double*)distancetable,(int*)city,len);//製作距離表
+    //讀檔結束
+    while(r<run)
     {
-        formularesult[visit[visitindex]]=-1;//如果儲存過的則標註
-    }
-    double sum=0;
-    int bestcity;//最好的城市編號
-    double optimum=0.0;//最佳的城市解 
-    for(int i=0;i<cityquan;i++)
-    {
-        if(i!=-1)
+        double distance;
+        double finaldistance=1000000;
+        double pher[len][len];//紀錄費洛蒙表
+        double phertemp[len][len];//新增螞蟻的費洛蒙表等到該輪所有螞蟻走完後與上表進行衰退＆疊加
+        phermoneinitial((double*)pher,len);//初始費洛蒙濃度
+        int path[len+1];//儲存當前螞蟻的路徑
+        int finalpath[len+1];//儲存到目前為止最好的路徑
+        for(int i=0;i<ant;i++)//首次利用隨機的方式進行走訪
         {
-            formularesult[i]=formula(distance,phermone,cityquan,start,i);
-            if(formularesult[i]>optimum)
-            {
-                optimum=formularesult[i];
-                bestcity=i;
+            randompath((int*)city,distance,path,len,(double*)distancetable);
+        //cout<<i<<'.'<<"Distance :"<<distance<<endl<<"Path:";
+        //Print(path,len+1);
+            phermoneupdate(path,(double*)pher,distance,len,decline);
+        //cout<<endl;
+            if(distance<finaldistance){
+                finaldistance=distance;
+                memcpy(finalpath,path,sizeof(path));
             }
-            formularesult[i]=formularesult[i]+sum;
-            sum=formularesult[i];
+            distance=0;
+        }//螞蟻隨機亂爬，初始化完成
+    int iter=1;
+    int whichcycle = 0;
+        
+        while(iter<=iteration){
+            memset(phertemp,0,sizeof(phertemp));//新增一個費洛蒙表初始狀態為０
+            for(int i=0;i<ant;i++)
+            {
+                oneant((int*)city,(double*)pher,path,start,len,distance,(double*)distancetable);//利用費洛蒙和距離公式計算出單隻螞蟻的路徑
+                // if(distance<470)
+                //     twoopt(path,len,distance,(double*)distancetable);
+                // }
+                if(distance<=finaldistance){//儲存最佳解
+                        finaldistance=distance;
+                        memcpy(finalpath,path,sizeof(path));
+                        whichcycle=iter;//儲存最佳解來自第幾的ＩＴＥＲＡＴＩＯＮ
+                        if(finaldistance<460)
+                        {
+                       // twoopt(path,len,finaldistance,(double*)distancetable);
+                        }
+                        cout<<"Iteration:"<<iter<<endl;
+                        cout<<"Current Optima:"<<finaldistance<<endl;
+                    
+                    }
+                phermoneupdate(path,(double*)phertemp,distance,len,decline);
+                //cout<<"ant "<<i+1<<" distance :"<<distance<<endl;//生成單一距離以及路徑
+                distance=0;
+            }
+            
+            phermonermix((double*)pher,(double*)phertemp,len,len);
+            bestphermoneupdate(finalpath,(double*)pher,finaldistance,len,decline);
+            //Print(finalpath,len+1);//印出隨機產生的最佳解
+            iter++;
         }
-        else 
-            formularesult[i]=-100;
+    cout<<"Run :"<<r+1<<endl;
+    cout<<"Global Optimum:"<<finaldistance<<endl;
+    cout<<"The Global Optima is come from the "<<whichcycle<<" iteration"<<endl;;
+    Print(finalpath,len+1);//印出隨機產生的最佳解
+    
+    result[r]=finaldistance;
+    if(result[r]<bestrunresult)
+    {
+        bestrunresult=result[r];
+        memcpy(bestrunpath,finalpath,sizeof(finalpath));
     }
-    for(int i=0;i<cityquan;i++){cout<<formularesult[i]<<endl;}
-    cout<<sum<<endl;
-    cout<<bestcity<<' '<<optimum<<endl;
-    return bestcity;
-}
-void choosecity(double *formularesult,double sum,int *visit,int cityquan,int visitindex,int bestcity)//利用機率表選擇出城市
-{
-    double chc=fRand(0.0,1.0);
-    if(chc<q0)
-         visit[visitindex]=bestcity;
-    else{
-        double ran=fRand(0.0,sum);
-        for(int i=0;i<cityquan;i++)
-        {
-            if(formularesult[i]<ran)
-                visit[visitindex]=i;
-        }
+    r++;
     }
-}
-int main(int argc,char *argv[]){
-	double START,END;
-    srand((unsigned)time(NULL));
-	int iteration = atoi(argv[1]);
-	int run = atoi(argv[2]);
-	int r=0;//run
-	int k=0;//在第幾個iteration找到最佳解
-    int cityquan;//
-    int *a=read(cityquan);//讀檔用的pointer
-    int city[cityquan][dim];
-    double pher[cityquan][cityquan];//紀錄費洛蒙表
-    double phertemp[cityquan][cityquan];
-    double distancetable[cityquan][cityquan];//儲存距離表
-    cout<<cityquan<<endl;
-    makearr((int*)city,a,cityquan);//紀錄好city的點和xy軸
-    phermoneinitial( (double*)pher,cityquan);//起始費洛蒙濃度
-    phermoneinitial( (double*)phertemp,cityquan);//起始費洛蒙濃度
-    distance((double*)distancetable,(int*)city,cityquan);//製作距離表
-    //初始化完成****************************************************************
-    int bestcity=probabilitytable((double*)distancetable,(double*)pher,cityquan,0);
-    int visit[cityquan];//造訪順序表
-    visit[0]=0;
-    double formularesult[cityquan];//儲存公式計算完的結果   
-    memset(formularesult,0,cityquan);
+    END=clock();
+    int avg=0;
+      for(int i=0;i<run;i++)
+      {
+          avg+=result[i];
+      }
+    avg=avg/30;
    
+    cout<<"---------------------------------"<<endl;
+    cout<<"All run result :"<<endl;
+    Print(result,run);
+    cout<<"The Global Optimum Path : "<<endl;
+    Print(bestrunpath,len+1);//印出隨機產生的最佳解
+    cout<<endl<<"alpha: "<<alpha<<endl;
+    cout<<"beta: "<<beta<<endl;
+    cout<<"numbers of ants: "<<ant<<endl;
+    cout<<"numbers  of evaluations :"<<iteration*ant<<endl;
+    cout<<"numbers of run :"<<run<<endl;
+    cout<<"Best Optimum: "<<bestrunresult<<endl;
+    cout<<"Average Optimum : "<<avg<<endl;
+    cout<<"Execution Time: "<<(END - START) / CLOCKS_PER_SEC<<"(s)"<<endl;
+  
+    
+
 }
+
