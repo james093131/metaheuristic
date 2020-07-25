@@ -44,28 +44,39 @@ int main(int argc, char const *argv[])
         while (iter < iteration)
         {
             //memset(phertemp, 0, sizeof(phertemp)); //新增一個費洛蒙表初始狀態為０
+            double iter_bestdistance = 1000000;
+            int iter_bestpath[len + 1];        
             phermonermix((double *)phertemp, (double *)pher, len, len);
             for (int i = 0; i < ant; i++)
             {
                 //int start=rand()%len+1;
                 oneant((int *)city, (double *)pher, path, start, len, distance, (double *)distancetable); //利用費洛蒙和距離公式計算出單隻螞蟻的路徑
-                if (distance <= finaldistance)
+                if (distance <= iter_bestdistance)
                 { //儲存最佳解
-                    finaldistance = distance;
-                    memcpy(finalpath, path, sizeof(path));
-                    whichcycle = iter; //儲存最佳解來自第幾的ＩＴＥＲＡＴＩＯＮ
+                    iter_bestdistance = distance;
+                    memcpy(iter_bestpath, path, sizeof(path));
                     // if (finaldistance < 460)
                     // {
                     //     twoopt(path,len,finaldistance,(double*)distancetable);
                     // }
-                    cout << "Iteration:" << iter << endl;
-                    cout << "Current Optima:" << finaldistance << endl;
                 }
                 phermoneupdate(path, (double *)phertemp, distance, len, decline);
                 //cout<<"ant "<<i+1<<" distance :"<<distance<<endl;//生成單一距離以及路徑
                 distance = 0;
             }
-
+            cout <<"Iteration "<<iter<< " best ant:" << iter_bestdistance << endl;
+            if (iter_bestdistance <= finaldistance)
+                { //儲存最佳解
+                    finaldistance = iter_bestdistance;
+                    memcpy(finalpath, iter_bestpath, sizeof(iter_bestpath));
+                    whichcycle = iter; //儲存最佳解來自第幾的ＩＴＥＲＡＴＩＯＮ
+                    // if (finaldistance < 460)
+                    // {
+                    //     twoopt(path,len,finaldistance,(double*)distancetable);
+                    // }
+                    //cout << "Iteration:" << iter << endl;
+                    //cout << "Current Optima:" << finaldistance << endl;
+                }
             phermonermix((double *)pher, (double *)phertemp, len, len);
             bestphermoneupdate(finalpath, (double *)pher, finaldistance, len, decline);
             //Print(finalpath,len+1);//印出隨機產生的最佳解
