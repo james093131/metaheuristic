@@ -41,7 +41,7 @@ int main(int argc, char const *argv[])
         double pher[len][len];                //紀錄費洛蒙表
         double phertemp[len][len];            //新增螞蟻的費洛蒙表等到該輪所有螞蟻走完後與上表進行衰退＆疊加
         phermoneinitial((double *)pher, len); //初始費洛蒙濃度
-        phermoneinitial((double *)phertemp, len); //初始費洛蒙濃度
+        //phermoneinitial((double *)phertemp, len); //初始費洛蒙濃度
         int path[len + 1];                    //儲存當前螞蟻的路徑
         int finalpath[len + 1];               //儲存到目前為止最好的路徑
         int iter = 1;
@@ -51,7 +51,7 @@ int main(int argc, char const *argv[])
             //memset(phertemp, 0, sizeof(phertemp)); //新增一個費洛蒙表初始狀態為０
             double iter_bestdistance = 1000000;
             int iter_bestpath[len + 1];        
-            phermonermix((double *)phertemp, (double *)pher, len, len);
+            //phermonermix((double *)phertemp, (double *)pher, len, len);
             for (int i = 0; i < ant; i++)
             {
                 //int start=rand()%len+1;
@@ -60,29 +60,25 @@ int main(int argc, char const *argv[])
                 { //儲存最佳解
                     iter_bestdistance = distance;
                     memcpy(iter_bestpath, path, sizeof(path));
-                    // if (finaldistance < 460)
-                    // {
-                    //     twoopt(path,len,finaldistance,(double*)distancetable);
-                    // }
+                    if (iter_bestdistance < 460)
+                    {
+                         twoopt(iter_bestpath,len,iter_bestdistance,(double*)distancetable);
+                    }
                 }
                 //cout<<"ant "<<i+1<<" distance :"<<distance<<endl;//生成單一距離以及路徑
                 distance = 0;
             }
-            phermoneupdate(iter_bestpath, (double *)phertemp, iter_bestdistance, len, decline);
+            phermoneupdate(iter_bestpath, (double *)pher, iter_bestdistance, len, decline);
             //cout <<"Iteration "<<iter<< " best ant:" << iter_bestdistance << endl;
             if (iter_bestdistance < finaldistance)
                 { //儲存最佳解
                     finaldistance = iter_bestdistance;
                     memcpy(finalpath, iter_bestpath, sizeof(iter_bestpath));
                     whichcycle = iter; //儲存最佳解來自第幾的ＩＴＥＲＡＴＩＯＮ
-                    // if (finaldistance < 460)
-                    // {
-                    //     twoopt(path,len,finaldistance,(double*)distancetable);
-                    // }
                     cout << "Iteration:" << iter << endl;
                     cout << "Current Optima:" << finaldistance << endl;
                 }
-            phermonermix((double *)pher, (double *)phertemp, len, len);
+            //phermonermix((double *)pher, (double *)phertemp, len, len);
             bestphermoneupdate(finalpath, (double *)pher, finaldistance, len, decline);
             //Print(finalpath,len+1);//印出隨機產生的最佳解
             iter++;
@@ -100,7 +96,7 @@ int main(int argc, char const *argv[])
         r++;
     }
     END = clock();
-    int avg = 0;
+    double avg = 0;
     for (int i = 0; i < run; i++)
     {
         avg += result[i];
@@ -108,17 +104,16 @@ int main(int argc, char const *argv[])
     avg = avg / run;
 
     cout << "---------------------------------" << endl;
-    cout << "All run result :" << endl;
-    Print(result, run);
-    cout << "The Global Optimum Path : " << endl;
-    Print(bestrunpath, len + 1); //印出隨機產生的最佳解
-    cout << endl;
-    cout << "alpha: " << alpha << endl;
-    cout << "beta: " << beta << endl;
-    cout << "numbers of ants: " << ant << endl;
-    cout << "numbers  of evaluations :" << iteration * ant << endl;
-    cout << "numbers of run :" << run << endl;
-    cout << "Best Optimum: " << bestrunresult << endl;
-    cout << "Average Optimum : " << avg << endl;
-    cout << "Execution Time: " << (END - START) / CLOCKS_PER_SEC << "(s)" << endl;
+    finaloutput(ant,alpha,beta,iteration,run,result,bestrunresult,bestrunpath,avg,START,END,len);
+    fstream file;//寫檔
+    file.open("ACOresult.txt",ios::app);
+    file << endl;
+    file << "alpha: " << alpha << endl;
+    file << "beta: " << beta << endl;
+    file << "numbers of ants: " << ant << endl;
+    file << "numbers  of evaluations :" << iteration * ant << endl;
+    file << "numbers of run :" << run << endl;
+    file << "Best Optimum: " << bestrunresult << endl;
+    file << "Average Optimum : " << avg << endl;
+    file << "Execution Time: " << (END - START) / CLOCKS_PER_SEC << "(s)" << endl;
 }

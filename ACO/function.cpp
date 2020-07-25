@@ -25,35 +25,39 @@ void phermoneupdate(int *path,double *pher,int dis,int len,double dec){
             int y=path[i+1]-1;
             *((double*)pher +len*(k)+y)=*((double*)pher +len*(k)+y)*(1-dec)+dec*(double)Q/dis;
             *((double*)pher +len*(y)+k)=*((double*)pher +len*(k)+y);
+            if(*((double*)pher +len*(k)+y)<initial_pher){
+                    *((double*)pher +len*(k)+y)=initial_pher;
+                    *((double*)pher +len*(y)+k)=initial_pher;
+                }
     }
 }
-void phermonermix(double *pher,double *phertemp,int lenx,int leny)
-{
-    for(int i=0;i<lenx;i++)
-    {
-        for(int j=0;j<leny;j++)
-        {
-            if(lenx>=leny)
-            {
-            //*((double*)pher +lenx*(i)+j)=*((double*)pher +lenx*(i)+j)*decline+*((double*)phertemp +lenx*(i)+j);
-                if(*((double*)phertemp +lenx*(i)+j)<*((double*)phertemp +lenx*(j)+i))
-                {
-                    *((double*)pher +lenx*(i)+j)=*((double*)phertemp +lenx*(i)+j);
-                    *((double*)pher +lenx*(j)+i)=*((double*)phertemp +lenx*(i)+j);
-                }
-                else{
-                    *((double*)pher +lenx*(i)+j)=*((double*)phertemp +lenx*(j)+i);
-                    *((double*)pher +lenx*(j)+i)=*((double*)phertemp +lenx*(j)+i);
-                }
-                if(*((double*)pher +lenx*(i)+j)<initial_pher){
-                    *((double*)pher +lenx*(i)+j)=initial_pher;
-                    *((double*)pher +lenx*(j)+i)=initial_pher;
-                }
+// void phermonermix(double *pher,double *phertemp,int lenx,int leny)
+// {
+//     for(int i=0;i<lenx;i++)
+//     {
+//         for(int j=0;j<leny;j++)
+//         {
+//             if(lenx>=leny)
+//             {
+//             //*((double*)pher +lenx*(i)+j)=*((double*)pher +lenx*(i)+j)*decline+*((double*)phertemp +lenx*(i)+j);
+//                 if(*((double*)phertemp +lenx*(i)+j)<*((double*)phertemp +lenx*(j)+i))
+//                 {
+//                     *((double*)pher +lenx*(i)+j)=*((double*)phertemp +lenx*(i)+j);
+//                     *((double*)pher +lenx*(j)+i)=*((double*)phertemp +lenx*(i)+j);
+//                 }
+//                 else{
+//                     *((double*)pher +lenx*(i)+j)=*((double*)phertemp +lenx*(j)+i);
+//                     *((double*)pher +lenx*(j)+i)=*((double*)phertemp +lenx*(j)+i);
+//                 }
+//                 if(*((double*)pher +lenx*(i)+j)<initial_pher){
+//                     *((double*)pher +lenx*(i)+j)=initial_pher;
+//                     *((double*)pher +lenx*(j)+i)=initial_pher;
+//                 }
                     
-            }
-        }
-    }
-}
+//             }
+//         }
+//     }
+// }
 int solutionconstruct(int *arr,double *pher,int ini,int len,int *check,double &dis,double * distable,double alpha,double beta){//用輪盤的方式找下一點
     double sum=0;
     double temp[len];
@@ -212,4 +216,21 @@ void twoopt(int *path,int len,double &distance,double *distancetable)
             }
         }
     }
+}
+void finaloutput(int ant,double alpha,double beta,int iteration,int run,int *result,int bestrunresult,int *bestrunpath,double avg,double START,double END,int len)
+{   
+    cout<<endl<<"-------------------------------"<<endl;
+    cout << "All run result :" << endl;
+    Print(result, run);
+    cout << "The Global Optimum Path : " << endl;
+    Print(bestrunpath,len + 1); //印出隨機產生的最佳解
+    cout << endl;
+    cout << "alpha: " << alpha << endl;
+    cout << "beta: " << beta << endl;
+    cout << "numbers of ants: " << ant << endl;
+    cout << "numbers  of evaluations :" << iteration * ant << endl;
+    cout << "numbers of run :" << run << endl;
+    cout << "Best Optimum: " << bestrunresult << endl;
+    cout << "Average Optimum : " << avg << endl;
+    cout << "Execution Time: " << (END - START) / CLOCKS_PER_SEC << "(s)" << endl;
 }

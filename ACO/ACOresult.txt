@@ -1,0 +1,126 @@
+
+alpha: 2.25
+beta: 6.4
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 429
+Average Optimum : 438.4
+Execution Time: 41.4481(s)
+
+alpha: 2.15
+beta: 6.4
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 431
+Average Optimum : 439.1
+Execution Time: 42.2545(s)
+
+alpha: 2.2
+beta: 6.4
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 431
+Average Optimum : 437.9
+Execution Time: 42.203(s)
+
+alpha: 2.25
+beta: 6.4
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 430
+Average Optimum : 437
+Execution Time: 42.8772(s)
+
+alpha: 2.3
+beta: 6.4
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 431
+Average Optimum : 438.9
+Execution Time: 45.0495(s)
+
+alpha: 2.25
+beta: 6.4
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 430
+Average Optimum : 433.5
+Execution Time: 40.3144(s)
+
+alpha: 2.25
+beta: 6.4
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :30
+Best Optimum: 430
+Average Optimum : 435.833
+Execution Time: 129.609(s)
+
+alpha: 2.2
+beta: 6.4
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :30
+Best Optimum: 431
+Average Optimum : 435.533
+Execution Time: 124.597(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 429
+Average Optimum : 433.5
+Execution Time: 40.2798(s)
+
+alpha: 2.2
+beta: 6.4
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 431
+Average Optimum : 433.8
+Execution Time: 40.4545(s)
+
+alpha: 2.25
+beta: 6.6
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 429
+Average Optimum : 434.5
+Execution Time: 41.8105(s)
+
+alpha: 2.5
+beta: 6.7
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 429
+Average Optimum : 435.3
+Execution Time: 43.1507(s)
+
+alpha: 2
+beta: 6
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 431
+Average Optimum : 436.4
+Execution Time: 40.515(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :30
+Best Optimum: 429
+Average Optimum : 434.167
+Execution Time: 121.723(s)
