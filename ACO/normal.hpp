@@ -25,7 +25,7 @@
 #define start 1
 #define Q 0.9
 #define decline 0.1
-#define initial_pher 0.00001
+#define initial_pher 0.000167
 using namespace std;
 int* read(int &sum);//讀檔
 void Print(int *arr,int len);//印出一維陣列

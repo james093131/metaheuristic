@@ -23,8 +23,8 @@ void phermoneupdate(int *path,double *pher,int dis,int len,double dec){
     {
             int k=path[i]-1;
             int y=path[i+1]-1;
-            *((double*)pher +len*(k)+y)=*((double*)pher +len*(k)+y)*dec+(double)Q/dis;
-            *((double*)pher +len*(y)+k)=*((double*)pher +len*(y)+k)*dec+(double)Q/dis;
+            *((double*)pher +len*(k)+y)=*((double*)pher +len*(k)+y)*(1-dec)+dec*(double)Q/dis;
+            *((double*)pher +len*(y)+k)=*((double*)pher +len*(k)+y);
     }
 }
 void phermonermix(double *pher,double *phertemp,int lenx,int leny)
@@ -145,8 +145,8 @@ void bestphermoneupdate(int *bestpath,double *pher,int dis,int len,double dec){
     {
             int k=bestpath[i]-1;
             int y=bestpath[i+1]-1;
-            *((double*)pher +len*(k)+y)=*((double*)pher +len*(k)+y)*dec+(double)Q/dis;
-            *((double*)pher +len*(y)+k)=*((double*)pher +len*(y)+k)*dec+(double)Q/dis;
+            *((double*)pher +len*(k)+y)=*((double*)pher +len*(k)+y)*(1-dec)+dec*(double)Q/dis;
+            *((double*)pher +len*(y)+k)=*((double*)pher +len*(y)+k)*(1-dec)+dec*(double)Q/dis;
     }
 }
 

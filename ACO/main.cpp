@@ -36,44 +36,28 @@ int main(int argc, char const *argv[])
         double pher[len][len];                //紀錄費洛蒙表
         double phertemp[len][len];            //新增螞蟻的費洛蒙表等到該輪所有螞蟻走完後與上表進行衰退＆疊加
         phermoneinitial((double *)pher, len); //初始費洛蒙濃度
+        phermoneinitial((double *)phertemp, len); //初始費洛蒙濃度
         int path[len + 1];                    //儲存當前螞蟻的路徑
         int finalpath[len + 1];               //儲存到目前為止最好的路徑
-        for (int i = 0; i < ant; i++)         //首次利用隨機的方式進行走訪
-        {
-            //int start=rand()%len+1;
-            randompath((int *)city, distance, path, len, (double *)distancetable,start);
-            //cout<<i<<'.'<<"Distance :"<<distance<<endl<<"Path:";
-            //Print(path,len+1);
-            phermoneupdate(path, (double *)pher, distance, len, decline);
-            //cout<<endl;
-            if (distance < finaldistance)
-            {
-                finaldistance = distance;
-                memcpy(finalpath, path, sizeof(path));
-            }
-            distance = 0;
-        } //螞蟻隨機亂爬，初始化完成
         int iter = 1;
         int whichcycle = 0;
-        while (iter <= iteration)
+        while (iter < iteration)
         {
-            memset(phertemp, 0, sizeof(phertemp)); //新增一個費洛蒙表初始狀態為０
+            //memset(phertemp, 0, sizeof(phertemp)); //新增一個費洛蒙表初始狀態為０
+            phermonermix((double *)phertemp, (double *)pher, len, len);
             for (int i = 0; i < ant; i++)
             {
                 //int start=rand()%len+1;
                 oneant((int *)city, (double *)pher, path, start, len, distance, (double *)distancetable); //利用費洛蒙和距離公式計算出單隻螞蟻的路徑
-                // if(distance<470)
-                //     twoopt(path,len,distance,(double*)distancetable);
-                // }
                 if (distance <= finaldistance)
                 { //儲存最佳解
                     finaldistance = distance;
                     memcpy(finalpath, path, sizeof(path));
                     whichcycle = iter; //儲存最佳解來自第幾的ＩＴＥＲＡＴＩＯＮ
-                    if (finaldistance < 460)
-                    {
-                        // twoopt(path,len,finaldistance,(double*)distancetable);
-                    }
+                    // if (finaldistance < 460)
+                    // {
+                    //     twoopt(path,len,finaldistance,(double*)distancetable);
+                    // }
                     cout << "Iteration:" << iter << endl;
                     cout << "Current Optima:" << finaldistance << endl;
                 }
@@ -90,9 +74,7 @@ int main(int argc, char const *argv[])
         cout << "Run :" << r + 1 << endl;
         cout << "Global Optimum:" << finaldistance << endl;
         cout << "The Global Optima is come from the " << whichcycle << " iteration" << endl;
-        ;
         Print(finalpath, len + 1); //印出隨機產生的最佳解
-
         result[r] = finaldistance;
         if (result[r] < bestrunresult)
         {
