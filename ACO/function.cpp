@@ -54,7 +54,7 @@ void phermonermix(double *pher,double *phertemp,int lenx,int leny)
         }
     }
 }
-int solutionconstruct(int *arr,double *pher,int ini,int len,int *check,double &dis,double * distable){//用輪盤的方式找下一點
+int solutionconstruct(int *arr,double *pher,int ini,int len,int *check,double &dis,double * distable,double alpha,double beta){//用輪盤的方式找下一點
     double sum=0;
     double temp[len];
     memset(temp,0,sizeof(temp));
@@ -92,7 +92,7 @@ int solutionconstruct(int *arr,double *pher,int ini,int len,int *check,double &d
     //cout<<choice<<endl;
     return choice;
 }
-void oneant(int *arr,double *pher,int *path,int ini,int len,double &dis,double *distable){
+void oneant(int *arr,double *pher,int *path,int ini,int len,double &dis,double *distable,double alpha,double beta){
     //010101
     int check[len];
     memset(check,-1,sizeof(check));
@@ -102,7 +102,7 @@ void oneant(int *arr,double *pher,int *path,int ini,int len,double &dis,double *
     int i=1;
     int k=ini;
     while(i<len){
-    k=solutionconstruct(arr,pher,k,len,check,dis,distable);
+    k=solutionconstruct(arr,pher,k,len,check,dis,distable,alpha,beta);
     path[i]=k;
     check[k-1]=1;
     i++;

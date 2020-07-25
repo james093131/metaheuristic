@@ -11,7 +11,11 @@
 int main(int argc, char const *argv[])
 {
     int r = 0;
-
+    int ant = atoi(argv[1]);
+	double alpha = atof(argv[2]);
+	double beta = atof(argv[3]);
+    int iteration= atoi(argv[4]);
+    int run= atoi(argv[5]);
     double START, END;
     srand(static_cast<unsigned int>(time(nullptr)));
     int *a;
@@ -28,6 +32,7 @@ int main(int argc, char const *argv[])
     double distancetable[len][len]; //儲存距離表
     makearr((int *)city, a, len);
     distancecal((double *)distancetable, (int *)city, len); //製作距離表
+  
     //讀檔結束
     while (r < run)
     {
@@ -50,7 +55,7 @@ int main(int argc, char const *argv[])
             for (int i = 0; i < ant; i++)
             {
                 //int start=rand()%len+1;
-                oneant((int *)city, (double *)pher, path, start, len, distance, (double *)distancetable); //利用費洛蒙和距離公式計算出單隻螞蟻的路徑
+                oneant((int *)city, (double *)pher, path, start, len, distance, (double *)distancetable,alpha,beta); //利用費洛蒙和距離公式計算出單隻螞蟻的路徑
                 if (distance <= iter_bestdistance)
                 { //儲存最佳解
                     iter_bestdistance = distance;
@@ -60,12 +65,12 @@ int main(int argc, char const *argv[])
                     //     twoopt(path,len,finaldistance,(double*)distancetable);
                     // }
                 }
-                phermoneupdate(path, (double *)phertemp, distance, len, decline);
                 //cout<<"ant "<<i+1<<" distance :"<<distance<<endl;//生成單一距離以及路徑
                 distance = 0;
             }
-            cout <<"Iteration "<<iter<< " best ant:" << iter_bestdistance << endl;
-            if (iter_bestdistance <= finaldistance)
+            phermoneupdate(iter_bestpath, (double *)phertemp, iter_bestdistance, len, decline);
+            //cout <<"Iteration "<<iter<< " best ant:" << iter_bestdistance << endl;
+            if (iter_bestdistance < finaldistance)
                 { //儲存最佳解
                     finaldistance = iter_bestdistance;
                     memcpy(finalpath, iter_bestpath, sizeof(iter_bestpath));
@@ -74,8 +79,8 @@ int main(int argc, char const *argv[])
                     // {
                     //     twoopt(path,len,finaldistance,(double*)distancetable);
                     // }
-                    //cout << "Iteration:" << iter << endl;
-                    //cout << "Current Optima:" << finaldistance << endl;
+                    cout << "Iteration:" << iter << endl;
+                    cout << "Current Optima:" << finaldistance << endl;
                 }
             phermonermix((double *)pher, (double *)phertemp, len, len);
             bestphermoneupdate(finalpath, (double *)pher, finaldistance, len, decline);
@@ -100,15 +105,15 @@ int main(int argc, char const *argv[])
     {
         avg += result[i];
     }
-    avg = avg / 30;
+    avg = avg / run;
 
     cout << "---------------------------------" << endl;
     cout << "All run result :" << endl;
     Print(result, run);
     cout << "The Global Optimum Path : " << endl;
     Print(bestrunpath, len + 1); //印出隨機產生的最佳解
-    cout << endl
-         << "alpha: " << alpha << endl;
+    cout << endl;
+    cout << "alpha: " << alpha << endl;
     cout << "beta: " << beta << endl;
     cout << "numbers of ants: " << ant << endl;
     cout << "numbers  of evaluations :" << iteration * ant << endl;

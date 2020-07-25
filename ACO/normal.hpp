@@ -16,11 +16,11 @@
 #include <string.h>
 #include<time.h>
 #include<math.h>
-#define ant 51
-#define alpha 3.25
-#define beta 9.75
-#define iteration 1000
-#define run 30
+// #define ant 51
+// #define alpha 2.6
+// #define beta 6.7
+// #define iteration 1000
+// #define run 30
 #define dim 3//幾維
 #define start 1
 #define Q 0.9
