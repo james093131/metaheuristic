@@ -66,7 +66,7 @@ int solutionconstruct(int *arr,double *pher,int ini,int len,int *check,double &d
     {
         if(i!=ini-1&&checkpathornot(check,i,len)){
             //double dis=calculatedistance(*((int*)arr +dim*(ini-1)+1),*((int*)arr +dim*(ini-1)+2),*((int*)arr +dim*(i)+1),*((int*)arr +dim*(i)+2));//計算兩點的距離
-            double dis=*((double*)distable +len*(ini-1)+i);
+            double dis=*((double*)distable +len*(ini-1)+i);//計算兩點的距離
             temp[i]=sum+pow(*((double*)pher +len*(ini-1)+(i)),alpha)*pow(1/dis,beta);//用疊加的方式來進行方便後續機率切割作業
             sum=temp[i];
         }

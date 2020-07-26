@@ -137,3 +137,4 @@ int main(int argc, char const *argv[])
         file<<i<<' '<<(iteration_optimum[i]/run)<<endl;
     }
 }
+3
