@@ -118,7 +118,7 @@ int main(int argc, char const *argv[])
     file << "numbers  of evaluations :" << iteration * ant << endl;
     file << "numbers of run :" << run << endl;
     file << "All run result :" << endl;
-    for(int i=0;i<len+1;i++)
+    for(int i=0;i<run;i++)
     {
         file<<result[i]<<' ';
     }
