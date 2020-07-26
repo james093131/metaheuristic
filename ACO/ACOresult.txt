@@ -124,3 +124,364 @@ numbers of run :30
 Best Optimum: 429
 Average Optimum : 434.167
 Execution Time: 121.723(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :30
+Best Optimum: 429
+Average Optimum : 436.333
+Execution Time: 143.847(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :30
+Best Optimum: 430
+Best Optimum Path
+1 32 11 2 16 50 9 49 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 21 29 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 436.4
+Execution Time: 143.352(s)
+
+alpha: 2
+beta: 6
+numbers of ants: 30
+numbers  of evaluations :6000
+numbers of run :30
+Best Optimum: 431
+Best Optimum Path
+1 32 11 38 9 49 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 50 16 21 29 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 439.367
+Execution Time: 29.13(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :6000
+numbers of run :30
+Best Optimum: 429
+Best Optimum Path
+1 22 8 26 31 28 3 36 35 20 2 29 21 16 50 34 30 9 49 10 39 33 45 15 44 42 40 19 41 13 25 14 24 43 7 23 48 6 27 51 46 12 47 18 4 17 37 5 38 11 32 1 
+Average Optimum : 438.767
+Execution Time: 29.657(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :30
+Best Optimum: 431
+Best Optimum Path
+1 22 8 26 31 28 3 36 35 20 29 21 34 30 39 10 33 45 15 44 42 40 19 41 13 25 14 24 43 7 23 48 6 27 51 46 12 47 18 4 17 37 5 38 49 9 50 16 2 11 32 1 
+Average Optimum : 437.367
+Execution Time: 143.469(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :30
+Best Optimum: 429
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 49 9 30 34 50 16 21 29 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 437.167
+Execution Time: 142.639(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :30
+Best Optimum: 429
+Best Optimum Path
+1 22 8 26 31 28 3 36 35 20 29 2 16 50 21 34 30 9 49 10 39 33 45 15 44 42 40 19 41 13 25 14 24 43 7 23 48 6 27 51 46 12 47 18 4 17 37 5 38 11 32 1 
+Average Optimum : 436.967
+Execution Time: 143.244(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :30
+Best Optimum: 430
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 49 9 30 34 50 21 29 16 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 436.167
+Execution Time: 144.104(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :10
+Best Optimum: 429
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 49 9 30 34 50 16 21 29 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 436.3
+Execution Time: 47.656(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :10
+Best Optimum: 431
+Best Optimum Path
+1 32 11 2 16 50 9 49 38 5 37 17 4 18 47 12 46 51 27 48 6 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 21 29 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 435.3
+Execution Time: 47.624(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :10
+Best Optimum: 430
+Best Optimum Path
+1 32 11 2 16 50 9 49 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 21 29 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 436.9
+Execution Time: 47.979(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :10
+Best Optimum: 431
+Best Optimum Path
+1 22 8 26 31 28 3 36 35 20 29 21 34 30 10 39 33 45 15 44 42 40 19 41 13 25 14 24 43 7 23 6 48 27 51 46 12 47 18 4 17 37 5 38 49 9 50 16 2 11 32 1 
+Average Optimum : 436.4
+Execution Time: 47.826(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :10
+Best Optimum: 429
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 49 9 30 34 50 16 21 29 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 435.6
+Execution Time: 48.048(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :10
+Best Optimum: 430
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 48 6 23 7 43 24 14 25 13 41 40 19 42 44 15 45 33 39 10 49 9 30 34 50 16 21 29 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 435.3
+Execution Time: 47.93(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :10
+Best Optimum: 429
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 49 9 30 34 21 50 16 2 29 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 437.2
+Execution Time: 47.884(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :10
+Best Optimum: 431
+Best Optimum Path
+1 32 11 38 9 49 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 50 16 21 29 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 436.9
+Execution Time: 48.389(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 435
+Best Optimum Path
+1 32 11 38 5 49 9 50 16 2 29 21 34 30 10 39 33 45 15 44 42 40 19 41 13 25 14 18 4 17 37 47 12 46 51 27 6 24 43 7 23 48 8 26 31 28 3 36 35 20 22 1 
+Average Optimum : 442.5
+Execution Time: 9.651(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 433
+Best Optimum Path
+1 22 2 16 50 21 29 20 35 36 3 28 31 26 8 48 23 7 43 24 6 27 51 46 12 47 4 18 14 25 13 41 19 40 42 17 37 44 15 45 33 39 10 30 34 9 49 5 38 11 32 1 
+Average Optimum : 436.5
+Execution Time: 9.567(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 443
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 6 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 49 30 34 9 50 16 21 29 2 20 35 36 3 28 31 8 26 48 22 1 
+Average Optimum : 443.5
+Execution Time: 9.577(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :1
+Best Optimum: 439
+Best Optimum Path
+1 22 3 20 35 36 28 31 26 8 48 23 7 43 24 6 27 51 46 12 37 17 4 47 18 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 21 29 2 16 50 9 49 5 38 11 32 1 
+Average Optimum : 439
+Execution Time: 4.751(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 437
+Best Optimum Path
+1 22 2 16 50 9 30 34 21 29 20 35 36 3 28 31 8 26 7 23 43 24 14 25 13 41 19 40 42 4 18 6 48 27 51 46 12 47 17 37 44 15 45 33 39 10 49 5 38 11 32 1 
+Average Optimum : 438.5
+Execution Time: 9.528(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :1
+Best Optimum: 437
+Best Optimum Path
+1 32 11 38 5 12 47 18 4 17 37 15 45 33 44 42 40 19 41 13 25 14 24 43 7 23 6 51 46 27 48 8 26 31 28 3 36 35 20 29 21 34 30 39 10 49 9 50 16 2 22 1 
+Average Optimum : 437
+Execution Time: 4.789(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :1
+Best Optimum: 430
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 49 9 30 34 50 21 29 16 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 430
+Execution Time: 4.815(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :10
+Best Optimum: 430
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 49 9 30 34 50 21 29 16 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 436.9
+Execution Time: 48.497(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :5
+Best Optimum: 435
+Best Optimum Path
+1 32 11 38 5 49 10 39 33 45 15 44 42 40 19 41 13 25 14 18 4 17 37 12 47 51 46 27 48 6 23 24 43 7 26 8 31 28 3 36 35 20 29 21 34 30 9 50 16 2 22 1 
+Average Optimum : 437.6
+Execution Time: 24.278(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 438
+Best Optimum Path
+1 22 8 26 31 28 3 36 35 20 29 21 34 30 39 10 33 45 15 44 42 40 19 41 13 25 14 24 43 7 23 48 6 27 51 46 12 47 18 4 17 37 5 38 49 9 50 16 2 32 11 1 
+Average Optimum : 439
+Execution Time: 9.626(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 434
+Best Optimum Path
+1 22 2 16 50 9 30 34 21 29 20 35 36 3 28 31 26 8 48 23 7 43 24 25 14 6 27 51 46 12 47 37 17 4 18 13 41 19 40 42 44 15 45 33 39 10 49 5 38 11 32 1 
+Average Optimum : 437
+Execution Time: 9.555(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 434
+Best Optimum Path
+1 22 2 16 50 9 30 34 21 29 20 35 36 3 28 31 26 8 48 23 7 43 24 25 14 6 27 51 46 12 47 37 17 4 18 13 41 19 40 42 44 15 45 33 39 10 49 5 38 11 32 1 
+Average Optimum : 435.5
+Execution Time: 9.734(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 436
+Best Optimum Path
+1 32 11 38 16 50 9 49 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 21 29 20 35 36 3 28 31 26 8 22 2 1 
+Average Optimum : 436.5
+Execution Time: 9.625(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 430
+Best Optimum Path
+1 22 2 16 50 9 30 34 21 29 20 35 36 3 28 31 26 8 48 23 7 43 24 6 27 51 46 12 47 4 18 14 25 13 41 19 40 42 44 17 37 15 45 33 39 10 49 5 38 11 32 1 
+Average Optimum : 433
+Execution Time: 9.747(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 439
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 51 46 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 10 39 30 34 49 9 50 16 21 29 2 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 439
+Execution Time: 9.663(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :2
+Best Optimum: 441
+Best Optimum Path
+1 32 11 38 9 49 5 37 17 4 18 47 12 46 51 27 6 14 25 13 41 19 40 42 44 15 45 33 10 39 30 34 50 16 21 29 2 20 35 36 3 28 31 8 26 7 43 24 23 48 22 1 
+Average Optimum : 441.5
+Execution Time: 9.72(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :30
+Best Optimum: 430
+Best Optimum Path
+1 32 11 2 16 50 9 49 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 21 29 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 438.367
+Execution Time: 143.937(s)

@@ -25,6 +25,8 @@ int main(int argc, char const *argv[])
     int len = templen / dim;
     int bestrunpath[len + 1];
     int result[run];
+    double iteration_optimum[1001];
+    memset(iteration_optimum,0,sizeof(iteration_optimum));
     int bestrunresult = 100000;
     START = clock();
 
@@ -60,10 +62,10 @@ int main(int argc, char const *argv[])
                 { //儲存最佳解
                     iter_bestdistance = distance;
                     memcpy(iter_bestpath, path, sizeof(path));
-                    if (iter_bestdistance < 460)
-                    {
-                         twoopt(iter_bestpath,len,iter_bestdistance,(double*)distancetable);
-                    }
+                   // if (iter_bestdistance < 468)
+                    //{
+                    twoopt(iter_bestpath,len,iter_bestdistance,(double*)distancetable);
+                    //}
                 }
                 //cout<<"ant "<<i+1<<" distance :"<<distance<<endl;//生成單一距離以及路徑
                 distance = 0;
@@ -78,6 +80,7 @@ int main(int argc, char const *argv[])
                     cout << "Iteration:" << iter << endl;
                     cout << "Current Optima:" << finaldistance << endl;
                 }
+            iteration_optimum[iter]+=finaldistance;
             //phermonermix((double *)pher, (double *)phertemp, len, len);
             bestphermoneupdate(finalpath, (double *)pher, finaldistance, len, decline);
             //Print(finalpath,len+1);//印出隨機產生的最佳解
@@ -105,6 +108,7 @@ int main(int argc, char const *argv[])
 
     cout << "---------------------------------" << endl;
     finaloutput(ant,alpha,beta,iteration,run,result,bestrunresult,bestrunpath,avg,START,END,len);
+    
     fstream file;//寫檔
     file.open("ACOresult.txt",ios::app);
     file << endl;
@@ -114,6 +118,17 @@ int main(int argc, char const *argv[])
     file << "numbers  of evaluations :" << iteration * ant << endl;
     file << "numbers of run :" << run << endl;
     file << "Best Optimum: " << bestrunresult << endl;
-    file << "Average Optimum : " << avg << endl;
+    file << "Best Optimum Path"<<endl;
+    for(int i=0;i<len+1;i++)
+    {
+        file<<bestrunpath[i]<<' ';
+    }
+    file <<endl<< "Average Optimum : " << avg << endl;
     file << "Execution Time: " << (END - START) / CLOCKS_PER_SEC << "(s)" << endl;
+    file.close();
+    file.open("ACO_convergence.txt",ios::out);
+    for(int i=1;i<iteration;i++)
+    {
+        file<<i<<' '<<(iteration_optimum[i]/run)<<endl;
+    }
 }
