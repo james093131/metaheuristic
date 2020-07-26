@@ -117,7 +117,12 @@ int main(int argc, char const *argv[])
     file << "numbers of ants: " << ant << endl;
     file << "numbers  of evaluations :" << iteration * ant << endl;
     file << "numbers of run :" << run << endl;
-    file << "Best Optimum: " << bestrunresult << endl;
+    file << "All run result :" << endl;
+    for(int i=0;i<len+1;i++)
+    {
+        file<<result[i]<<' ';
+    }
+    file << endl << "Best Optimum: " << bestrunresult << endl;
     file << "Best Optimum Path"<<endl;
     for(int i=0;i<len+1;i++)
     {

@@ -485,3 +485,49 @@ Best Optimum Path
 1 32 11 2 16 50 9 49 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 21 29 20 35 36 3 28 31 26 8 22 1 
 Average Optimum : 438.367
 Execution Time: 143.937(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 30
+numbers  of evaluations :30000
+numbers of run :30
+Best Optimum: 430
+Best Optimum Path
+1 32 11 38 5 49 10 39 33 45 15 37 17 44 42 19 40 41 13 25 14 18 4 47 12 46 51 27 48 6 24 43 23 7 26 8 31 28 3 36 35 20 29 21 34 30 9 50 16 2 22 1 
+Average Optimum : 437.233
+Execution Time: 145.973(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :30
+Best Optimum: 429
+Best Optimum Path
+1 22 2 16 50 9 30 34 21 29 20 35 36 3 28 31 8 26 7 43 24 23 48 6 27 51 46 12 47 4 18 14 25 13 41 19 40 42 44 17 37 15 45 33 39 10 49 5 38 11 32 1 
+Average Optimum : 434.5
+Execution Time: 247.028(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :10
+Best Optimum: 429
+Best Optimum Path
+1 32 11 38 5 37 17 4 18 47 12 46 51 27 6 48 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 49 9 30 34 21 50 16 2 29 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 434.5
+Execution Time: 82.279(s)
+
+alpha: 2.1
+beta: 6.3
+numbers of ants: 51
+numbers  of evaluations :51000
+numbers of run :30
+All run result :
+435 434 435 438 431 434 432 433 439 439 432 444 439 444 441 431 432 439 433 434 442 434 434 434 443 440 440 439 438 434 0 1878059520 1 32 11 2 16 50 9 49 38 5 37 17 4 18 47 12 46 51 27 48 
+Best Optimum: 431
+Best Optimum Path
+1 32 11 2 16 50 9 49 38 5 37 17 4 18 47 12 46 51 27 48 6 23 7 43 24 14 25 13 41 19 40 42 44 15 45 33 39 10 30 34 21 29 20 35 36 3 28 31 26 8 22 1 
+Average Optimum : 436.567
+Execution Time: 244.022(s)
