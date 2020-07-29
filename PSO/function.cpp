@@ -5,30 +5,14 @@
 //  Created by TzuChieh on 2020/3/24.
 //  Copyright © 2020 TzuChieh. All rights reserved.
 //
-#include<iostream>
-#include<fstream>
-#include<sstream>
-#include<stdlib.h>
-#include<string.h>
-#include<time.h>
-#include <math.h>
-#include <stdio.h>
-#define max 40.000
-#define min -40.000
-#define n 30
-#define dim 3
-#define c1 0.8
-#define c2 0.6
-#define w 0.8
-#define ITE 1000
-using namespace std;
+#include "function.hpp"
 
-double  fun(double x,double y)
+double  formula(double x,double y)
 {
     double re=-20*(exp((-0.2)*sqrt((pow(x,2)+pow(y,2))/2)))-exp((cos(2*M_PI*x)+cos(2*M_PI*y))/2)+20+exp(1);
     return re;
 }
-void newposition(double *xt,double *vector,double *mybest,double *globallocation,double *tempbestdata,int ind)
+void newposition(double *xt,double *vector,double *mybest,double *globallocation,int ind)
 {
     double tempglobalbest[3]={0,0,100000};//用來暫存粒子移動後的最佳解
     for(int i=0;i<n;i++)
@@ -49,7 +33,7 @@ void newposition(double *xt,double *vector,double *mybest,double *globallocation
             *((double*)xt +3*(i)+1)=max;
         else if(*((double*)xt +3*(i)+1)<min)
             *((double*)xt +3*(i)+1)=min;
-        *((double*)xt +3*(i)+2)= fun(*((double*)xt +3*(i)+0), *((double*)xt +3*(i)+1));//更新當前解
+        *((double*)xt +3*(i)+2)= formula(*((double*)xt +3*(i)+0), *((double*)xt +3*(i)+1));//更新當前解
         if(*((double*)xt +3*(i)+2)<*((double*)mybest +3*(i)+2))//更新單一粒子移動後的最佳解
         {
             *((double*)mybest +3*(i)+0)=*((double*)xt +3*(i)+0);
@@ -63,7 +47,6 @@ void newposition(double *xt,double *vector,double *mybest,double *globallocation
             tempglobalbest[2]=*((double*)xt +3*(i)+2);
         }
     }
-    tempbestdata[ind]=tempglobalbest[2];//新增一個arr儲存每個ＩＴＥＲ的最佳解
     if(tempglobalbest[2]<globallocation[2])
     {
         globallocation[0]=tempglobalbest[0];
@@ -71,14 +54,13 @@ void newposition(double *xt,double *vector,double *mybest,double *globallocation
         globallocation[2]=tempglobalbest[2];
     }
 }
-
 void randomstart(double *particle,int x,int y)
 {
     for(int i=0;i<x;i++)
     {
         double a=(max - (min)) * rand() / (RAND_MAX + 1.0) + (min);
         double b=(max - (min)) * rand() / (RAND_MAX + 1.0) + (min);
-        double c=fun(a,b);
+        double c=formula(a,b);
         *((double*)particle +y*(i)+0) = a;//隨機x
         *((double*)particle +y*(i)+1) = b;//隨機ｙ
         *((double*)particle +y*(i)+2) = c;

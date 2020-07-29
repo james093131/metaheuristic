@@ -2,14 +2,16 @@
 //  main.cpp
 //  PSO
 //
-//  Created by TzuChieh on 2020/3/24.
+//  Created by TzuChieh on 2020/07/29
 //  Copyright © 2020 TzuChieh. All rights reserved.
 //
 
-#include "function.cpp"
+#include "function.hpp"
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     srand((unsigned int)time(NULL));
+    int ITE = atoi(argv[1]);
     int iteration=1;
     double iterbest[ITE];
     memset(iterbest,0,sizeof(iterbest));
@@ -29,7 +31,7 @@ int main(int argc, const char * argv[]) {
     while(iteration<ITE)
     {
         cout<<"Iteration "<<iteration+1<<':'<<endl;
-        newposition((double*)particle,(double*)vvector,(double*)mybest,globalbest,iterbest,iteration);//更新位置
+        newposition((double*)particle,(double*)vvector,(double*)mybest,globalbest,iteration);//更新位置
         if(globalbest[2]<temp)
         {
             temp=globalbest[2];
@@ -37,6 +39,13 @@ int main(int argc, const char * argv[]) {
         }
         cout<<'('<<globalbest[0]<<" ,"<<globalbest[1]<<')'<<endl<<"optima :"<<globalbest[2]<<endl;
         cout<<"optima is come from the "<<whereami<<" iteration  "<<endl<<endl;
+        iterbest[iteration]=globalbest[2];
         iteration++;
+    }
+    fstream file;//寫檔
+    file.open("PSO_Convergence.txt",ios::out);
+    for(int i=0;i<ITE;i++)
+    {
+     file<<i+1<<' '<<iterbest[i]<<endl;
     }
 }
