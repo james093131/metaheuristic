@@ -549,6 +549,7 @@ alpha: 2.1
 beta: 6.3
 numbers of ants: 51
 numbers  of evaluations :51000
+<<<<<<< HEAD
 numbers of run :30
 All run result :
 434 431 441 433 436 436 439 432 443 435 434 434 433 431 432 431 430 435 430 434 436 437 433 441 441 441 435 436 430 437 
@@ -557,3 +558,13 @@ Best Optimum Path
 1 22 8 26 31 28 3 36 35 20 29 21 34 30 10 39 33 45 15 44 42 40 19 41 13 25 14 24 43 7 23 48 6 27 51 46 12 47 18 4 17 37 5 38 49 9 50 16 2 11 32 1 
 Average Optimum : 435.033
 Execution Time: 246.839(s)
+=======
+numbers of run :10
+All run result :
+438 431 438 432 433 429 434 434 436 441 
+Best Optimum: 429
+Best Optimum Path
+1 22 8 26 31 28 3 36 35 20 29 2 16 50 21 34 30 9 49 10 39 33 45 15 44 42 40 19 41 13 25 14 24 43 7 23 48 6 27 51 46 12 47 18 4 17 37 5 38 11 32 1 
+Average Optimum : 434.6
+Execution Time: 40.6632(s)
+>>>>>>> e437ebad08fa57993ed3ace1a49f387f338021d3
