@@ -1,5 +1,5 @@
 #include "function.hpp"
-double  formula(double *x,int len)
+double formula(double *x,int len)
 {
     double sigma1=0;
     double sigma2=0;
@@ -145,7 +145,7 @@ void finaloutput(double optimum,double *best,int dim,int iteration,int checkpoin
 void output_txt(double RUN_optimum ,double AVG_optimum,double *best,int dim,int AVG_iteration,int ITE,int checkpoint,int run,int pop,double START,double END)
 {
     fstream file;//寫檔
-    file.open("DE_Convergence.txt",ios::app);
+    file.open("DE_Result.txt",ios::app);
    
     file<<"Run : "<<run<<endl;
     file<<"Population : "<<pop<<endl; 

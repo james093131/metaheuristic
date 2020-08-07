@@ -22,6 +22,10 @@ int main(int argc, const char * argv[]) {
     double AVG_Iteration=0;
     double RUN_best[DIM-1];//所有ＲＵＮ裡面最好解的座標
     double RUN_result[RUN];//儲存所有ＲＵＮ的結果
+
+    // double Each_Iteration[ITE];
+    // memset(Each_Iteration,0,sizeof(Each_Iteration));
+
     int lowlow;//測試程式在各維度的效果用的
     
     START = clock();
@@ -41,6 +45,7 @@ int main(int argc, const char * argv[]) {
             select( (double*)DE_POP,(double*)DE_Vector,POP,DIM);//crossover後，選擇子代or父代（較優的）
             Evaluation((double*)DE_POP,ITE_best,ITE_optimum,POP,DIM);
             //cout<<"Iteration "<<iteration+1<<": "<<ITE_optimum<<endl;
+            //Each_Iteration[iteration]+=ITE_optimum;
             if(ITE_optimum<0.00001)
             {
                 lowlow=1;
@@ -65,5 +70,16 @@ int main(int argc, const char * argv[]) {
     AVG_optimum = AVG_optimum/RUN;
     AVG_Iteration = AVG_Iteration/RUN;
     output_txt(RUN_optimum ,AVG_optimum,RUN_best,DIM,AVG_Iteration,ITE,lowlow,RUN,POP,START,END);
+
+    // for(int i=0;i<ITE;i++)
+    // {
+    //     Each_Iteration[i] = Each_Iteration[i]/RUN;
+    // }
+    // fstream file1;//製作收斂圖用
+    // file1.open("DE_Convergence.txt",ios::out);
+    // for(int i=0;i<ITE;i++)
+    // {
+    //     file1 <<i+1<<' '<< Each_Iteration[i]<<endl;
+    // }
 
 }
