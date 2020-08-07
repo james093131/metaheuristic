@@ -71,11 +71,11 @@ int main(int argc, const char * argv[]) {
     AVG_Iteration = AVG_Iteration/RUN;
     output_txt(RUN_optimum ,AVG_optimum,RUN_best,DIM,AVG_Iteration,ITE,lowlow,RUN,POP,START,END);
 
-    // for(int i=0;i<ITE;i++)
+    // for(int i=0;i<ITE;i++)//製作收斂圖用
     // {
     //     Each_Iteration[i] = Each_Iteration[i]/RUN;
     // }
-    // fstream file1;//製作收斂圖用
+    // fstream file1;
     // file1.open("DE_Convergence.txt",ios::out);
     // for(int i=0;i<ITE;i++)
     // {
