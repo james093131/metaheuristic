@@ -127,3 +127,70 @@ void Evaluation(double *DE_pop,double *best,double &optimum,int pop,int len)
         }
     }
 }
+void finaloutput(double optimum,double *best,int dim,int iteration,int checkpoint,int run)
+{
+    cout<<"---------------------------------------"<<endl;
+    cout<<"Run : "<<run<<endl;
+    cout<<"dimensions : "<<dim<<endl;
+    cout<<"Optimum : "<<optimum<<endl;
+    cout<<"coordinate : "<<endl<<'(';
+    for(int i=0;i<dim-2;i++)
+    {
+        cout<<best[i]<<',';
+    }
+    cout<<best[dim-2]<<')'<<endl;
+    cout<<"---------------------------------------"<<endl;
+   
+}
+void output_txt(double RUN_optimum ,double AVG_optimum,double *best,int dim,int AVG_iteration,int ITE,int checkpoint,int run,int pop,double START,double END)
+{
+    fstream file;//寫檔
+    file.open("DE_Convergence.txt",ios::app);
+   
+    file<<"Run : "<<run<<endl;
+    file<<"Population : "<<pop<<endl; 
+    file<<"Dimensions : "<<dim<<endl;
+    if(checkpoint==1)
+    {
+        file<<"The Average Iteration that Optimum is less than 0.00001 : "<< AVG_iteration <<endl;
+        cout<<"The Average Iteration that Optimum is less than 0.00001 : "<< AVG_iteration <<endl;
+    }
+    else
+    {
+        file<<"Within a "<<ITE<<" Iteration can not find the average optimum is less than 0.00001"<<endl;
+        cout<<"Within a "<<ITE<<" Iteration can not find the average optimum is less than 0.00001"<<endl;
+    }
+    file << "Execution Time: " << (END - START) / CLOCKS_PER_SEC << "(s)" << endl;
+    file<<"Average Optimum : "<<AVG_optimum<<endl;
+    file<<"Best Optimum : "<<RUN_optimum<<endl;
+    file<<"Best Optimum coordinate : "<<endl<<'(';
+    for(int i=0;i<dim-2;i++)
+    {
+        file<<best[i]<<" , ";
+    }
+    file<<best[dim-2]<<')'<<endl;
+    file<<"----------------------------------------------------"<<endl;
+    cout<<"Run : "<<run<<endl;
+    cout<<"Population : "<<pop<<endl; 
+    cout<<"Dimensions : "<<dim<<endl;
+    cout << "Execution Time: " << (END - START) / CLOCKS_PER_SEC << "(s)" << endl;
+    cout<<"Average Optimum : "<<AVG_optimum<<endl;
+    cout<<"Best Optimum : "<<RUN_optimum<<endl;
+    cout<<"Best Optimum coordinate : "<<endl<<'(';
+    for(int i=0;i<dim-2;i++)
+    {
+        cout<<best[i]<<" , ";
+    }
+    cout<<best[dim-2]<<')'<<endl;
+    cout<<"----------------------------------------------------"<<endl;
+}
+double AVG(double *result,int run)
+{
+    double a=0;
+    for(int i=0;i<run;i++)
+    {
+        a+=result[i];
+    }
+    a=a/run;
+    return a;
+}

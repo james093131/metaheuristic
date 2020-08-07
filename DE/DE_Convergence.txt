@@ -1,6 +1,110 @@
-The Iteration that Optimum is less than 0.00001 : 171164
+Run : 30
+Population : 50
+Dimensions : 3
+The Average Iteration that Optimum is less than 0.00001 : 195
+Execution Time: 0.065479(s)
+Average Optimum : 6.50509e-06
+Best Optimum : 1.17227e-06
+Best Optimum coordinate : 
+(3.89643e-08 , -4.12624e-07)
+----------------------------------------------------
+Run : 30
+Population : 50
+Dimensions : 4
+The Average Iteration that Optimum is less than 0.00001 : 315
+Execution Time: 0.141776(s)
+Average Optimum : 7.15848e-06
+Best Optimum : 2.52526e-06
+Best Optimum coordinate : 
+(2.74012e-07 , -7.20713e-07 , 7.75335e-07)
+----------------------------------------------------
+Run : 30
+Population : 50
+Dimensions : 5
+The Average Iteration that Optimum is less than 0.00001 : 347
+Execution Time: 0.196244(s)
+Average Optimum : 7.43275e-06
+Best Optimum : 3.12904e-06
+Best Optimum coordinate : 
+(1.46554e-06 , 3.47371e-08 , -9.60142e-08 , -5.3798e-07)
+----------------------------------------------------
+Run : 30
+Population : 50
+Dimensions : 6
+The Average Iteration that Optimum is less than 0.00001 : 763
+Execution Time: 0.5157(s)
+Average Optimum : 7.8957e-06
+Best Optimum : 5.0825e-06
+Best Optimum coordinate : 
+(1.47972e-06 , -2.08584e-06 , -1.02965e-06 , 4.92641e-07 , -4.78569e-07)
+----------------------------------------------------
+Run : 30
+Population : 50
+Dimensions : 7
+The Average Iteration that Optimum is less than 0.00001 : 1293
+Execution Time: 1.03413(s)
+Average Optimum : 8.18279e-06
+Best Optimum : 4.91008e-06
+Best Optimum coordinate : 
+(-1.47448e-06 , -8.41788e-07 , -2.85906e-07 , -8.95518e-07 , -1.61398e-06 , -1.63378e-06)
+----------------------------------------------------
+Run : 30
+Population : 50
+Dimensions : 8
+The Average Iteration that Optimum is less than 0.00001 : 2136
+Execution Time: 2.0664(s)
+Average Optimum : 8.68259e-06
+Best Optimum : 6.19988e-06
+Best Optimum coordinate : 
+(-1.56954e-06 , -5.35729e-07 , 3.49872e-06 , 1.78465e-07 , 1.30351e-06 , -2.59148e-07 , -1.62846e-07)
+----------------------------------------------------
+Run : 30
+Population : 50
+Dimensions : 9
+The Average Iteration that Optimum is less than 0.00001 : 4314
+Execution Time: 4.67183(s)
+Average Optimum : 8.69057e-06
+Best Optimum : 6.52184e-06
+Best Optimum coordinate : 
+(-5.22221e-07 , -7.40487e-07 , 7.9874e-08 , -3.86971e-06 , 3.16945e-07 , -1.45715e-06 , 1.24527e-06 , 1.29992e-06)
+----------------------------------------------------
+Run : 30
+Population : 50
+Dimensions : 10
+The Average Iteration that Optimum is less than 0.00001 : 10521
+Execution Time: 12.7282(s)
+Average Optimum : 9.00578e-06
+Best Optimum : 6.07905e-06
+Best Optimum coordinate : 
+(-1.35809e-06 , -6.28414e-07 , -4.23837e-07 , -1.89269e-07 , 1.41083e-06 , 2.83538e-06 , -1.62046e-06 , -2.23771e-06 , 8.17551e-07)
+----------------------------------------------------
+Run : 30
+Population : 50
+Dimensions : 11
+The Average Iteration that Optimum is less than 0.00001 : 21821
+Execution Time: 28.6661(s)
+Average Optimum : 8.50315e-06
+Best Optimum : 6.22602e-06
+Best Optimum coordinate : 
+(-4.29244e-07 , 2.06918e-06 , 3.50299e-07 , -3.12876e-06 , 1.33682e-06 , 1.25205e-08 , -1.70235e-06 , -1.99833e-06 , 1.08016e-06 , -5.6153e-08)
+----------------------------------------------------
+Run : 30
+Population : 50
+Dimensions : 12
+The Average Iteration that Optimum is less than 0.00001 : 53932
+Execution Time: 78.2366(s)
+Average Optimum : 9.26824e-06
+Best Optimum : 8.0394e-06
+Best Optimum coordinate : 
+(1.8705e-06 , -1.6305e-06 , 4.15405e-06 , -1.93578e-06 , 1.96132e-07 , 1.15154e-06 , 9.18652e-08 , -3.59249e-07 , -7.88626e-07 , 3.69982e-06 , -1.2078e-06)
+----------------------------------------------------
+Run : 30
+Population : 50
 Dimensions : 13
-Optimum : 9.61936e-06
-coordinate : 
-(-4.5634e-06,-4.01991e-06,1.0951e-06,-3.27773e-06,-1.09189e-06,3.51881e-07,-2.59919e-06,-1.61352e-06,-1.25302e-06,-1.22833e-06,-2.4956e-06,6.96725e-07)
-
+Within a 200000 Iteration can not find the average optimum is less than 0.00001
+Execution Time: 205.029(s)
+Average Optimum : 1.16744
+Best Optimum : 7.70508e-06
+Best Optimum coordinate : 
+(2.02492e-06 , 2.78432e-07 , 2.8344e-06 , -1.58909e-06 , -3.80629e-06 , -7.56128e-07 , -1.34913e-06 , 1.61509e-06 , -1.97023e-06 , 7.40898e-08 , -1.63832e-06 , 1.93067e-06)
+----------------------------------------------------

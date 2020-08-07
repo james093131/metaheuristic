@@ -2,7 +2,7 @@
 //  main.cpp
 //  DE
 //
-//  Created by TzuChieh on 2020/07/29
+//  Created by TzuChieh on 2020/08/07
 //  Copyright © 2020 TzuChieh. All rights reserved.
 //
 
@@ -10,58 +10,60 @@
 
 int main(int argc, const char * argv[]) {
     // insert code here...
+    double START, END;
     srand((unsigned int)time(NULL));
-    int ITE = atoi(argv[1]);
-    int POP = atoi(argv[2]);//幾組DE在RUN
-    int DIM = atoi(argv[3]);//幾組DE在RUN
-    int iteration=0;
-    double DE_POP[POP][DIM];
-    double DE_Vector[POP][DIM-1];
-    double best[DIM-1];
-    double optimum=100000.00;
-    int lowlow=-1;
-    randomstart((double*)DE_POP,POP,DIM);//隨機起始位置
-    Evaluation((double*)DE_POP,best,optimum,POP,DIM);
-    cout<<optimum<<endl;
-    while(iteration<ITE)
-    {
-        Vector_make((double*)DE_POP,(double*)DE_Vector,POP,DIM);
-        select( (double*)DE_POP,(double*)DE_Vector,POP,DIM);
-        Evaluation((double*)DE_POP,best,optimum,POP,DIM);
-        cout<<"Iteration "<<iteration+1<<": "<<optimum<<endl;
-        
-        // for(int i=0;i<DIM-1;i++)
-        // {
-        //     cout<<best[i]<<' ';
-        // }
-        // cout<<endl;
-        if(optimum<0.00001)
-        {
-            lowlow=1;
-            break;
-        }
-        iteration++;
-    }
-    cout<<"---------------------------------------"<<endl;
-    cout<<"Dimensions : "<<DIM<<endl;
-    cout<<"Optimum : "<<optimum<<endl;
-    cout<<"coordinate : "<<endl<<'(';
-    for(int i=0;i<DIM-2;i++)
-    {
-        cout<<best[i]<<',';
-    }
-    cout<<best[DIM-2]<<')'<<endl;
-    fstream file;//寫檔
-    file.open("DE_Convergence.txt",ios::app);
-    if(lowlow==1)
-        file<<"The Iteration that Optimum is less than 0.00001 : "<<iteration<<endl;
-    file<<"Dimensions : "<<DIM<<endl;
-    file<<"Optimum : "<<optimum<<endl;
-    file<<"coordinate : "<<endl<<'(';
-    for(int i=0;i<DIM-2;i++)
-    {
-        file<<best[i]<<',';
-    }
-    file<<best[DIM-2]<<')'<<endl<<endl;
+    int ITE = atoi(argv[1]);//幾個Iteration
+    int RUN = atoi(argv[2]);//幾個RUN
+    int POP = atoi(argv[3]);//幾組DE在RUN
+    int DIM = atoi(argv[4]);//幾組DE在RUN
+    int r=0;
+    double RUN_optimum=100000.00;
+    double AVG_optimum=0;
+    double AVG_Iteration=0;
+    double RUN_best[DIM-1];//所有ＲＵＮ裡面最好解的座標
+    double RUN_result[RUN];//儲存所有ＲＵＮ的結果
+    int lowlow;//測試程式在各維度的效果用的
     
+    START = clock();
+    while(r<RUN)
+    {
+        int iteration=0;
+        double DE_POP[POP][DIM];
+        double DE_Vector[POP][DIM-1];
+        double ITE_best[DIM-1];
+        double ITE_optimum=100000.00;
+        lowlow=-1;//測試程式在各維度的效果用的
+        randomstart((double*)DE_POP,POP,DIM);//隨機起始位置
+        Evaluation((double*)DE_POP,ITE_best,ITE_optimum,POP,DIM);//衡量當前解，並儲存最優解
+        while(iteration<ITE)
+        {
+            Vector_make((double*)DE_POP,(double*)DE_Vector,POP,DIM);//make u
+            select( (double*)DE_POP,(double*)DE_Vector,POP,DIM);//crossover後，選擇子代or父代（較優的）
+            Evaluation((double*)DE_POP,ITE_best,ITE_optimum,POP,DIM);
+            //cout<<"Iteration "<<iteration+1<<": "<<ITE_optimum<<endl;
+            if(ITE_optimum<0.00001)
+            {
+                lowlow=1;
+                break;
+            }
+            iteration++;
+        }
+        if(ITE_optimum < RUN_optimum)//記錄全部RUN的最佳解
+        {
+            RUN_optimum=ITE_optimum;
+            for(int i=0;i<DIM-1;i++)
+            {
+                RUN_best[i]=ITE_best[i];
+            }
+        }
+        AVG_optimum += ITE_optimum;
+        AVG_Iteration += iteration;
+        finaloutput( ITE_optimum, ITE_best, DIM, iteration, lowlow,r+1);
+        r++;
+    }
+    END = clock();
+    AVG_optimum = AVG_optimum/RUN;
+    AVG_Iteration = AVG_Iteration/RUN;
+    output_txt(RUN_optimum ,AVG_optimum,RUN_best,DIM,AVG_Iteration,ITE,lowlow,RUN,POP,START,END);
+
 }
